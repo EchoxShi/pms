@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="zzu.mavis.pms.customer.domain.Customer" table="t_customer">
+        <id name="ctmId">
+            <generator class="uuid"></generator>
+        </id>
+
+        <property name="loginName" type="java.lang.String"></property>
+        <property name="loginPassword" type="java.lang.String"></property>
+        <!--<property name="ctmName" type="java.lang.String"></property>-->
+        <property name="phone" type="java.lang.String"></property>
+        <!--<property name="IdCard" type="java.lang.String">-->
+            <!--<column name="IdCard" length="18"></column>-->
+        <!--</property>-->
+        <property name="email" type="java.lang.String"></property>
+        <!--<property name="birthday" type="java.util.Date"></property>-->
+        <!--<property name="sex" type="java.lang.String">-->
+            <!--<column name="sex" length="2"></column>-->
+        <!--</property>-->
+        <!--<property name="type" type="java.lang.String" ></property>-->
+
+
+
+    </class>
+</hibernate-mapping>

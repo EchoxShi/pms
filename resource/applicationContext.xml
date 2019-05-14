@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--1.配置公共项-->
+    <context:property-placeholder location="classpath:jdbcinfo.properties"></context:property-placeholder>
+    <!--2.配置数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driverClass}"></property>
+        <property name="url" value="${jdbc.jdbcUrl}"></property>
+        <property name="username" value="${jdbc.user}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!--第一部分，配置数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+        <!--第二部分，hibernate的属性-->
+        <property name="hibernateProperties" >
+            <props>
+                <!--自动生成表，（一般不用）-->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+        <!--第三部分，配置映射文件-->
+        <property name="mappingLocations"  value="classpath:zzu/mavis/pms/*/domain/*.hbm.xml"></property>
+    </bean>
+    <!--配置事务-->
+    <!--第一，配置事务管理器-->
+    <bean id="txManger" class="org.springframework.orm.hibernate5.HibernateTransactionManager" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <!--第二，配置事物详情（事物定义）-->
+    <!--增删改，读写；查，只读-->
+    <tx:advice id="txAdvice" transaction-manager="txManger">
+        <tx:attributes>
+            <tx:method name="add*"></tx:method>
+            <tx:method name="delete*"></tx:method>
+            <tx:method name="update*"></tx:method>
+            <tx:method name="find*"></tx:method>
+            <tx:method name="login*"></tx:method>
+            <tx:method name="registe*"></tx:method>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* zzu.mavis.pms.*.service..*.*(..))"></aop:advisor>
+    </aop:config>
+
+
+    <!--导入其他配置文件-->
+    <!--<import resource="applicationContext-Comment.xml"></import>-->
+    <import resource="classpath:applicationContext-Customer.xml"></import>
+    <!--<import resource="applicationContext-Order.xml"></import>-->
+    <!--<import resource="applicationContext-RoomType.xml"></import>-->
+    <!--<import resource="applicationContext-Member.xml"></import>-->
+    <!--<import resource="applicationContext-Room.xml"></import>-->
+
+</beans>
