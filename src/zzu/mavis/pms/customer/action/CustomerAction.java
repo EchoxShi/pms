@@ -42,8 +42,7 @@ public class CustomerAction extends ActionSupport  implements ModelDriven<Custom
         System.out.println("registe");
         //查找看是否已经注册过
         Customer findCustomer =customerService.findByName(customer);
-        if(null!=customer.getLoginPassword()&&customer.getLoginPassword()
-                ==findCustomer.getLoginPassword()){
+        if(findCustomer.getLoginPassword()==customer.getLoginPassword()){
             addActionMessage("此用户已注册过，请直接登录！");
             return "login";
         }
