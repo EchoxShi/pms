@@ -1,14 +1,32 @@
 package zzu.mavis.pms.customer.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import org.apache.struts2.components.ActionMessage;
+import com.opensymphony.xwork2.util.ValueStack;
+import zzu.mavis.pms.room.domain.Room;
+import zzu.mavis.pms.room.service.RoomService;
+import zzu.mavis.pms.roomType.domain.RoomType;
+import zzu.mavis.pms.roomType.service.RoomTypeService;
 import zzu.mavis.pms.customer.domain.Customer;
 import zzu.mavis.pms.customer.service.CustomerService;
+
+import java.util.List;
 
 public class CustomerAction extends ActionSupport  implements ModelDriven<Customer> {
     private CustomerService customerService;
     private Customer customer = new Customer();
+
+    private RoomService roomService;
+
+    public void setRoomService(RoomService roomService) {
+        this.roomService = roomService;
+    }
+    private RoomTypeService roomTypeService;
+
+    public void setRoomTypeService(RoomTypeService roomTypeService) {
+        this.roomTypeService = roomTypeService;
+    }
 
     public void setCustomerService(CustomerService customerService) {
         this.customerService = customerService;
@@ -42,12 +60,45 @@ public class CustomerAction extends ActionSupport  implements ModelDriven<Custom
         System.out.println("registe");
         //查找看是否已经注册过
         Customer findCustomer =customerService.findByName(customer);
-        if(findCustomer.getLoginPassword()==customer.getLoginPassword()){
+        if(null!=findCustomer&& findCustomer.getLoginPassword()==customer.getLoginPassword()){
             addActionMessage("此用户已注册过，请直接登录！");
-            return "login";
+            return "tologin";
         }
-        addActionMessage("注册成功！请登录");
         customerService.add(customer);
+        addActionMessage("注册成功！请登录");
+        return "tologin";
+    }
+    public String login(){
+        Customer byName = customerService.findByName(customer);
+
+
+        if(null==byName){
+            addActionMessage("该用户不存在！");
+            return "tologin";
+        }
+
+        if( !customer.getLoginPassword().trim().equals(byName.getLoginPassword())){
+           addActionMessage("密码错误！");
+           return "tologin";
+        }
+        //似乎没用到，应该把用户信息放入session
+        ValueStack valueStack = ActionContext.getContext().getValueStack();
+        valueStack.push(customer);
+        //把用户信息放入session
+        ActionContext.getContext().getSession().put("byName",byName);
+        return "UILogin";
+
+    }
+
+    public String UILogin(){
+
+        //查询所有的房间，放入值栈
+        List<Room> roomList = roomService.findAll();
+        ActionContext.getContext().getValueStack().set("roomList",roomList);
+        System.out.println(roomList.size()+roomList.get(0).toString());
+        //查询所有的房间类型，放入值栈
+        List<RoomType> roomTypeList = roomTypeService.findAll();
+        ActionContext.getContext().getValueStack().set("roomTypeList",roomTypeList);
         return "login";
     }
 }

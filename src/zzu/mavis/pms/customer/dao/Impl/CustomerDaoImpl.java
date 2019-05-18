@@ -20,9 +20,30 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements  CustomerDao
         DetachedCriteria criteria=DetachedCriteria.forClass(Customer.class);
         criteria.add(Restrictions.eq("loginName",customer.getLoginName()));
         List<Customer> result = (List<Customer>) this.getHibernateTemplate().findByCriteria(criteria);
-        if(result.size()==1){
+        if(result.size()>0){
             return result.get(0);
         }
         return null;
     }
+
+    @Override
+    public void update(Customer customer) {
+        this.getHibernateTemplate().saveOrUpdate(customer);
+    }
+
+    @Override
+    public Customer findByloginName(String name) {
+        List<Customer> ctmName = (List<Customer>) this.getHibernateTemplate().findByCriteria(DetachedCriteria.forClass(Customer.class).add(Restrictions.eq("loginName", name)));
+        if(ctmName.size()>0){
+            return ctmName.get(0);
+        }
+        return  null;
+    }
+
+    @Override
+    public Customer findById(String id) {
+        return (Customer) this.getHibernateTemplate().get("Customer",id);
+    }
+
+
 }

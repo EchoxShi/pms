@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="zzu.mavis.pms.order.domain.Orders" table="t_order">
+        <id name="oid">
+            <generator class="uuid"></generator>
+        </id>
+        <property name="dayin" type="java.util.Date"></property>
+        <property name="dayout" type="java.util.Date"></property>
+        <property name="mony" type="java.lang.Double"></property>
+        <property name="payStatus" type="int" ></property>
+        <property name="over" type="int" ></property>
+
+        <!--一个订单 只能写 一个 room-->
+        <many-to-one name="room" column="roomId" class="zzu.mavis.pms.room.domain.Room" cascade="save-update">
+        </many-to-one>
+
+        <!--一个 顾客   有 多个dingd-->
+        <many-to-one name="customer" class="zzu.mavis.pms.customer.domain.Customer" column="ctmId" cascade="save-update"></many-to-one>
+
+
+
+
+    </class>
+</hibernate-mapping>

@@ -62,11 +62,12 @@
 
 
     <!--导入其他配置文件-->
-    <!--<import resource="applicationContext-Comment.xml"></import>-->
+    <import resource="applicationContext-Comment.xml"></import>
     <import resource="classpath:applicationContext-Customer.xml"></import>
-    <!--<import resource="applicationContext-Order.xml"></import>-->
-    <!--<import resource="applicationContext-RoomType.xml"></import>-->
+    <import resource="applicationContext-Order.xml"></import>
+    <import resource="applicationContext-RoomType.xml"></import>
     <!--<import resource="applicationContext-Member.xml"></import>-->
-    <!--<import resource="applicationContext-Room.xml"></import>-->
+    <import resource="applicationContext-Room.xml"></import>
+
 
 </beans>

@@ -7,8 +7,11 @@
 
 <package name="cst" extends="common" namespace="/">
     <action name="CustomerAction_*" class="zzu.mavis.pms.customer.action.CustomerAction" method="{1}">
-        <result name="login">/login.jsp</result>
+        <result name="tologin">/login.jsp</result>
         <result name="registe">/registe.jsp</result>
+        <!--返回login时要做一些准备工作-->
+        <result name="UILogin" type="redirect">CustomerAction_UILogin</result>
+        <result name="login">/roomlist.jsp</result>
     </action>
 </package>
 

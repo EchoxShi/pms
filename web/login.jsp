@@ -254,8 +254,8 @@ font {
 		<div class="content1">
 			<h2>Sign In Form</h2>
 			<s:form namespace="/" method="POST" action="CustomerAction_login">
-				<font color="red" size="10mm"><s:actionmessage></s:actionmessage></font>
-				<s:textfield name="loginName"  value="LoginName" onfocus="this.value=''"  onblur="if (this.value == '') {this.value = 'LoginName';}"></s:textfield>
+				<span style="font-size: 15px;color: red"><s:actionmessage></s:actionmessage></span>
+				<s:textfield name="loginName"  value="LoginName"  onfocus="this.value=''"  onblur="if (this.value == '') {this.value = 'LoginName';}"></s:textfield>
 				<s:password name="loginPassword"  value="LoginPassword" onfocus="this.value=''" onblur="if (this.value == '') {this.value = 'LoginPassword';}"></s:password>
 				<div class="button-row">
 					<s:submit class="sign-in" value="Sign In"></s:submit>

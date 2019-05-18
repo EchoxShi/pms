@@ -13,7 +13,10 @@
     </package>
     <!--    3.包含其他配置文件-->
     <include file="struts-Customer.xml"></include>
-    <!--<include file="struts-Room.xml"></include>-->
-    <!--<include file="struts-RoomType.xml"></include>-->
+    <include file="struts-Room.xml"></include>
+    <include file="struts-RoomType.xml"></include>
+    <include file="struts-Order.xml"></include>
+    <include file="struts-Comment.xml"></include>
+
 
 </struts>

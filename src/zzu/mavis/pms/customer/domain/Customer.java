@@ -1,16 +1,35 @@
 package zzu.mavis.pms.customer.domain;
 
+import zzu.mavis.pms.order.domain.Orders;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Customer {
+    //注册时给出
     private String ctmId;
     private String loginName;
     private String loginPassword;
-//    private String ctmName;
     private String phone;
-//    private String IdCard;
     private String email;
-//    private Date birthday;
-//    private String sex;
-//    private String type;//会员是顾客的子类
+
+    //订房 时给出
+    private String ctmName;
+    private String IdCard;
+    private Date birthday;
+    private String sex;
+//一个顾客  有 多个订单
+    private Set<Orders> ordersSet =new HashSet<>();
+
+    public Set<Orders> getOrdersSet() {
+        return ordersSet;
+    }
+
+    public void setOrdersSet(Set<Orders> ordersSet) {
+        this.ordersSet = ordersSet;
+    }
+    //    private String type;//会员是顾客的子类
 
 //    public String getType() {
 //        return type;
@@ -45,13 +64,13 @@ public class Customer {
         this.loginPassword = loginPassword;
     }
 
-//    public String getCtmName() {
-//        return ctmName;
-//    }
-//
-//    public void setCtmName(String ctmName) {
-//        this.ctmName = ctmName;
-//    }
+    public String getCtmName() {
+        return ctmName;
+    }
+
+    public void setCtmName(String ctmName) {
+        this.ctmName = ctmName;
+    }
 
     public String getPhone() {
         return phone;
@@ -61,13 +80,13 @@ public class Customer {
         this.phone = phone;
     }
 
-//    public String getIdCard() {
-//        return IdCard;
-//    }
-//
-//    public void setIdCard(String idCard) {
-//        IdCard = idCard;
-//    }
+    public String getIdCard() {
+        return IdCard;
+    }
+
+    public void setIdCard(String idCard) {
+        IdCard = idCard;
+    }
 
     public String getEmail() {
         return email;
@@ -77,21 +96,35 @@ public class Customer {
         this.email = email;
     }
 
-//    public Date getBirthday() {
-//        return birthday;
-//    }
-//
-//    public void setBirthday(Date birthday) {
-//        this.birthday = birthday;
-//    }
-//
-//    public String getSex() {
-//        return sex;
-//    }
-//
-//    public void setSex(String sex) {
-//        this.sex = sex;
-//    }
+    public Date getBirthday() {
+        return birthday;
+    }
 
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "ctmId='" + ctmId + '\'' +
+                ", loginName='" + loginName + '\'' +
+                ", loginPassword='" + loginPassword + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", ctmName='" + ctmName + '\'' +
+                ", IdCard='" + IdCard + '\'' +
+                ", birthday=" + birthday +
+                ", sex='" + sex + '\'' +
+                ", ordersSet=" + ordersSet +
+                '}';
+    }
 }

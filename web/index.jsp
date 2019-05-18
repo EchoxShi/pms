@@ -103,7 +103,7 @@ font {
 									<a href="index.jsp" class="nav-hover active">Home</a>
 								</li>
 								<li>
-									<a href="#about" class="btn nav-hover scroll">Comment</a>
+									<a href="comment.jsp" class="btn nav-hover scroll">Comment</a>
 								</li>
 
 								<li>
@@ -120,7 +120,7 @@ font {
 								</li>
 								<li>
 								<a href="registe.jsp">Registe</a>
-							</li>
+							    </li>
 							</ul>
 
 							<div class="clearfix"> </div>

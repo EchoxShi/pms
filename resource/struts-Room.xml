@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+<package name="rom" extends="common" namespace="/">
+    <action name="RoomAction_*" class="zzu.mavis.pms.room.action.RoomAction" method="{1}">
+        <result name="findById">/roomlist.jsp</result>
+        <result name="findRoomById">/roomdetail.jsp</result>
+        <result name="UIPreserve">/preserve.jsp</result>
+
+
+    </action>
+</package>
+
+
+</struts>

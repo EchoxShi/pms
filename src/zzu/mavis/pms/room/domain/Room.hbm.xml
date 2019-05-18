@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="zzu.mavis.pms.room.domain.Room" table="t_room">
+        <id name="roomId">
+            <generator class="uuid"></generator>
+        </id>
+        <property name="roomNum"></property>
+        <property name="roomName" ></property>
+        <property name="remark" ></property>
+        <property name="pricePerNight" type="java.lang.Double" ></property>
+        <property name="status" type="int" ></property>
+        <property name="picPath" ></property>
+
+        <set name="ordersSet">
+            <key column="roomId" ></key>
+            <one-to-many class="zzu.mavis.pms.order.domain.Orders"></one-to-many>
+        </set>
+
+
+        <many-to-one name="roomType" class="zzu.mavis.pms.roomType.domain.RoomType" column="roomTypeId"></many-to-one>
+
+
+
+
+
+    </class>
+</hibernate-mapping>

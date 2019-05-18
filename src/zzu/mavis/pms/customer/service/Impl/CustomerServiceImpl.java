@@ -20,4 +20,19 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer findByName(Customer customer) {
         return customerDao.findByName(customer);
     }
+
+    @Override
+    public void update(Customer customer) {
+        customerDao.update(customer);
+    }
+
+    @Override
+    public Customer findByloginName(String name) {
+       return customerDao.findByloginName(name);
+    }
+
+    @Override
+    public Customer findById(String id) {
+        return customerDao.findById(id);
+    }
 }

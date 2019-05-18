@@ -208,7 +208,7 @@ font {
 		<div class="content2">
 			<h2>Sign Up Form</h2>
             <s:form namespace="/" action="CustomerAction_registe" method="POST">
-				<font color="red" size="10mm"><s:actionmessage></s:actionmessage></font>
+				<span style="font-size: 15px;color: red"><s:actionmessage></s:actionmessage></span>
                 <s:textfield name="loginName"  value="LoginName" onfocus="this.value=''"  onblur="if (this.value == '') {this.value = 'LoginName';}"></s:textfield>
 				<s:password name="loginPassword"  value="LoginPassword" onfocus="this.value=''" onblur="if (this.value == '') {this.value = 'LoginPassword';}"></s:password>
 				<s:textfield name="email"  value="Email" onfocus="this.value=''"  onblur="if (this.value == '') {this.value = 'Email';}"></s:textfield>
@@ -217,13 +217,7 @@ font {
 			</s:form>
 
 
-			<%--<form>--%>
-				<%--<input type="text" name="userid" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'NAME AND SURNAME';}">--%>
-				<%--<input type="tel" name="usrtel" value="PHONE" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PHONE';}">--%>
-				<%--<input type="email" name="email" value="EMAIL ADDRESS" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'EMAIL ADDRESS';}">--%>
-				<%--<input type="password" name="psw" value="PASSWORD" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}">--%>
-				<%--<input type="submit" class="register" value="Register">--%>
-			<%--</form>--%>
+
 		</div>
 		<div class="clear"></div>
 	</div>

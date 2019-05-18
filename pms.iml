@@ -19,6 +19,10 @@
             <file>file://$MODULE_DIR$/src/struts.xml</file>
             <file>file://$MODULE_DIR$/resource/struts.xml</file>
             <file>file://$MODULE_DIR$/resource/struts-Customer.xml</file>
+            <file>file://$MODULE_DIR$/resource/struts-Room.xml</file>
+            <file>file://$MODULE_DIR$/resource/struts-RoomType.xml</file>
+            <file>file://$MODULE_DIR$/resource/struts-Order.xml</file>
+            <file>file://$MODULE_DIR$/resource/struts-Comment.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -28,6 +32,10 @@
       <configuration>
         <fileset id="fileset" name="ApplicationContext" removed="false">
           <file>file://$MODULE_DIR$/resource/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/resource/applicationContext-Room.xml</file>
+          <file>file://$MODULE_DIR$/resource/applicationContext-RoomType.xml</file>
+          <file>file://$MODULE_DIR$/resource/applicationContext-Order.xml</file>
+          <file>file://$MODULE_DIR$/resource/applicationContext-Comment.xml</file>
         </fileset>
       </configuration>
     </facet>
