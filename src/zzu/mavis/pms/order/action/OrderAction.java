@@ -59,25 +59,31 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
 
         //先查出会员类型，再确定如何计算（这里只考虑储值型会员）
         Member member = memberService.findByCst(customer);
-        Double mony =member.getMon();
-        Double remain= member.getRemain();
-        //计算折扣
+        //如果该顾客尚未注册会员
         double zhekou=1;
-        if(null!=mony){
-            if(mony==5000){
-               zhekou=0.9;
-            }
-            if(mony==4000){
-                zhekou=0.93;
-            }
-            if(mony==3000){
-                zhekou=0.95;
-            }
-            if(mony==2000){
-                zhekou=0.97;
-            }
-            if(mony==1000){
-                zhekou=0.99;
+        Double mony=null;
+        Double remain=null;
+        if(null!=member){
+             mony =member.getMon();
+             remain= member.getRemain();
+            if(null!=mony){
+                //计算折扣
+
+                if(mony==5000){
+                    zhekou=0.9;
+                }
+                if(mony==4000){
+                    zhekou=0.93;
+                }
+                if(mony==3000){
+                    zhekou=0.95;
+                }
+                if(mony==2000){
+                    zhekou=0.97;
+                }
+                if(mony==1000){
+                    zhekou=0.99;
+                }
             }
         }
 
@@ -90,9 +96,12 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
         Double money =(days *(Double) room.getPricePerNight())*zhekou;
         orders.setMony(money);
 
-        remain=remain-money;
-        member.setRemain(remain);
-        memberService.add(member);//savaOrUpdate()
+        if(null!=member){
+            remain=remain-money;
+            member.setRemain(remain);
+            memberService.add(member);//savaOrUpdate()
+
+        }
 
         orderService.add(orders);
         System.out.println(orders.getOid());
@@ -108,9 +117,12 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
     }
 
     public String cancelOrder(){
-        //先更改房间状态(因为只穿过来一个oid 的参数，并没有封装其他的值，所以需要再查一遍)
-        Orders byId = orderService.findById(orders.getOid());
-        roomService.updateStatus(byId.getRoom());
+        //解决房间不可重复预订的问题时记的注释：现在 房间状态由每次查询时 实时确定 ，不再在下单时更改
+
+//        //先更改房间状态(因为只穿过来一个oid 的参数，并没有封装其他的值，所以需要再查一遍)
+//        Orders byId = orderService.findById(orders.getOid());
+//        roomService.updateStatus(byId.getRoom());
+
         //删除订单
         orderService.deleteById(orders.getOid());
         //通知老板 ，有人取消订单（已付款），联系退款
@@ -120,10 +132,11 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
     }
 
     public String pay(){
-        //先更改房间状态(因为只穿过来一个oid 的参数，并没有封装其他的值，所以需要再查一遍)
+//        //先更改房间状态(因为只穿过来一个oid 的参数，并没有封装其他的值，所以需要再查一遍)
         String oid = orders.getOid();
-        Orders byId = orderService.findById(oid);
-        roomService.updateStatus(byId.getRoom());
+//        Orders byId = orderService.findById(oid);
+//        roomService.updateStatus(byId.getRoom());
+
         //再改变订单状态
         orderService.updateStatus(oid);
         return "gopay";
@@ -133,8 +146,10 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
 //        check有退房 的意思
         //先更改房间状态(因为只穿过来一个oid 的参数，并没有封装其他的值，所以需要再查一遍)
         String oid = orders.getOid();
-        Orders byId = orderService.findById(oid);
-        roomService.updateStatus(byId.getRoom());
+
+//        Orders byId = orderService.findById(oid);
+//        roomService.updateStatus(byId.getRoom());
+
         //再使订单成为  完成状态
         orderService.updateOver(oid);
         return "check";

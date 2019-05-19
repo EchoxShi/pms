@@ -4,7 +4,7 @@
 <html >
 
 <head>
-	<title>roomlist</title>
+	<title>allRooms</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
@@ -39,7 +39,7 @@
 <body>
 
 <!-- banner -->
-			<div class="header" style="background-color:black">
+			<div class="header" style="background-color:black;position: relative">
 				<!-- header -->
 				<nav class="navbar navbar-default">
 					<div class="container">
@@ -117,97 +117,12 @@
 
 
 
-<!-- gallery -->
-	<div id="gallery" class="gallery w3layouts-section">
-		<h3 class="sec-title">a collection of
-			<span> Quality</span>
-		</h3>
-		<div class="gallery-row">
-			<div class="col-md-3 col-sm-3 col-xs-6 w3- gallery-grids">
-				<a href="images/img66.jpg" class="imghvr-hinge-right figure">
-
-					<img src="images/img66.jpg" alt="" title="Zoom Image" />
-
-					<div class="figcaption">
-						<h4>Zoom</h4>
-						<p>宽敞 舒适 大床房</p>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 w3- gallery-grids">
-				<a href="images/img55.jpg" class="imghvr-hinge-right figure">
-					<img src="images/img55.jpg" alt="" title="Zoom Image" />
-					<div class="figcaption">
-						<h4>Zoom</h4>
-						<p>静谧 温馨 单人间</p>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 w3- gallery-grids">
-				<a href="images/img77.jpg" class="imghvr-hinge-right figure">
-					<img src="images/img77.jpg" alt="" title="Zoom Image" />
-					<div class="figcaption">
-						<h4>Zoom</h4>
-						<p>豪华 大气  套房</p>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 w3- gallery-grids">
-				<a href="images/img88.jpg" class="imghvr-hinge-right figure">
-					<img src="images/img88.jpg" alt="" title="Zoom Image" />
-					<div class="figcaption">
-						<h4>Zoom</h4>
-						<p>舒适 洁净 三人间</p>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 w3- gallery-grids">
-				<a href="images/img11.jpg" class="imghvr-hinge-right figure">
-					<img src="images/img11.jpg" alt="" title="Zoom Image" />
-					<div class="figcaption">
-						<h4>Zoom</h4>
-						<p> 温馨 优雅 情侣房</p>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 w3- gallery-grids">
-				<a href="images/img22.jpg" class="imghvr-hinge-right figure">
-					<img src="images/img22.jpg" alt="" title="Zoom Image" />
-					<div class="figcaption">
-						<h4>Zoom</h4>
-						<p>精致 安静 商务间 </p>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 w3- gallery-grids">
-				<a href="images/img33.jpg" class="imghvr-hinge-right figure">
-					<img src="images/img33.jpg" alt="" title="Zoom Image" />
-					<div class="figcaption">
-						<h4>Zoom</h4>
-						<p>宽敞 整洁 四人间</p>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 w3- gallery-grids">
-				<a href="images/img44.jpg" class="imghvr-hinge-right figure">
-					<img src="images/img44.jpg" alt="" title="Zoom Image" />
-					<div class="figcaption">
-						<h4>Zoom</h4>
-						<p>干净 舒服 标准间</p>
-					</div>
-				</a>
-			</div>
-			<div >
-				<a href="#list"><img src="images/lear.png">
-				</a>
-			</div>
-
-			<div class="clearfix"> </div>
-
-		</div>
-	</div>
-	<!-- //gallery -->
-
+<%--<div id="searchCondition" >
+	<s:form action="RoomAction_findAll">
+查询条件：入住时间：<input type="date" name="searchDayIn">退房时间<input type="date" name="searchDayOut">
+		<s:submit value="在全部房间中搜索"></s:submit>
+	</s:form>
+</div>--%>
 <div id="list" style="width: 100%;height: auto;background: url('images/bggg.jpg') no-repeat;opacity: 0.5">
 
 <div id="roomtypelistbar" style=" background-color: #3d3d3d;">
@@ -215,7 +130,7 @@
 
 	<s:iterator value="roomTypeList" >
 		<div id="rt" style="display: inline;border: double white;font-family: '微软雅黑 Light';font-size: 15mm;padding:0px 30px;">
-		<s:a action="RoomAction_findById">
+		<s:a action="RoomAction_findAllOrderOrNotByRoomType">
 			<s:param  name="roomType.roomTypeId" value="%{roomTypeId}"></s:param>
 			<s:property value="roomTypeName"></s:property>
 		</s:a>
@@ -233,14 +148,14 @@
 			 style="display:inline;width:200px;font-size: 10mm;padding: 15px ;">
 
 			<s:a action="RoomAction_findRoomById" >
-				图片,不要点
+				图片
 				<s:param name="roomId" value="%{roomId}"></s:param>
 			</s:a>
 			房间号：<s:property value="roomNum"></s:property><br>
 			房间名：<s:property  value="roomName"></s:property><br>
 			价  格：<s:property  value="pricePerNight"></s:property><br>
-			<%--状   态：<s:if test="status==1">
-			&lt;%&ndash;status=1 可预订，status= 0，已定出&ndash;%&gt;
+			状   态：<s:if test="status==1">
+			<%--status=1 可预订，status= 0，已定出--%>
 			<s:a action="RoomAction_findRoomById" >
 				<font style="font-size:25px;color: red; background-color: whitesmoke ">可预订</font>
 				<s:param name="roomId" value="%{roomId}"></s:param>
@@ -254,14 +169,13 @@
 
 					<s:param name="roomId" value="%{roomId}"></s:param>
 				</s:a>
-			</s:elseif>--%>
+			</s:elseif>
 
 
 			<br>
 		</div>
 	</s:iterator>
-	<div style="width: 300px;height: 100px;background-color: black;color: whitesmoke;font-size: 15mm;margin-bottom: 50px;padding: 20px"><a href="${pageContext.servletContext.contextPath}/chooseDate.jsp">去预定</a>
-	</div>
+	<a href="${pageContext.servletContext.contextPath}/chooseDate.jsp">去预定</a>
 	<%--//房间列表--%>
 
 </div>

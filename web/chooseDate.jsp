@@ -1,43 +1,41 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="s" uri="/struts-tags" %>
-<!DOCTYPE html>
-<html >
-
+<html>
 <head>
-	<title>
-		填写订单
-	</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="" />
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-    <!-- Custom Theme files -->
-    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all" />
-    <!--// Owl-Carousel-CSS -->
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-    <link href="css/slider.css" type="text/css" rel="stylesheet" media="all">
-    <link href='css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
-    <!-- //Custom Theme files -->
-    <!-- font-awesome icons -->
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <!-- //font-awesome icons -->
-
-    <!-- web-fonts -->
-    <link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
-    <!-- //web-fonts -->
-
+    <title>chooseDate</title>
 </head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script>
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+</script>
+<!-- Custom Theme files -->
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all" />
+<!--// Owl-Carousel-CSS -->
+<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/slider.css" type="text/css" rel="stylesheet" media="all">
+<link href='css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
+<!-- //Custom Theme files -->
+<!-- font-awesome icons -->
+<link href="css/font-awesome.css" rel="stylesheet">
+<!-- //font-awesome icons -->
+
+<!-- web-fonts -->
+<link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+<!-- //web-fonts -->
+
+
+
 <body>
+<%--在这个页面输入日期去查询这段时间里哪些房间可预订，哪些房间不可预订--%>
 <!-- banner -->
 <div class="header" style="background-color:black;position: relative">
     <!-- header -->
@@ -65,10 +63,14 @@
                     <li>
                         <a href="comment.jsp" >Comment</a>
                     </li>
-
                     <li>
                         <a href="chooseDate.jsp" >ToPreserve</a>
                     </li>
+                    <%--<li>--%>
+                    <%--<a href="CustomerAction_UILogin" >ToPreserve</a>--%>
+                    <%--</li>--%>
+
+
                     <li>
                         <a href="openmemb.jsp" >OpenVIP</a>
                     </li>
@@ -109,91 +111,18 @@
 <!-- //header -->
 
 <!-- //banner -->
-<%--填写订单,提交给  orderAction中  addOrder 处理--%>
-    <s:form namespace="/" action="OrderAction_add">
-        <table border="1">
-            <tr>
-                <td>
-                <h1>入住人信息</h1>
-                </td>
-            </tr>
-            <tr>
-                <td><s:label value="姓   名："></s:label></td>
-                <td><s:textfield name="customer.ctmName" value="%{ctmName}"></s:textfield> </td>
-            </tr>
-            <tr>
-                <td><s:label value="证件号码："></s:label></td>
-                <td><s:textfield name="customer.IdCard" value="%{IdCard}"></s:textfield> </td>
-            </tr>
-            <tr>
-                <td><s:label value="出生日期："></s:label></td>
-                <td>
-                    <s:date name="date" format="yyyy-MM-dd" var="date"></s:date>
-                    <input type="date" name="customer.birthday" value="%{#date}" >
-                </td>
-
-            <%--<td><s:textfield name="customer.birthday"></s:textfield> </td>--%>
-            </tr>
-            <tr>
-                <td><s:label value="性    别："></s:label></td>
-                <td><s:radio list="{'男','女'}" name="customer.sex" value="%{sex}"></s:radio> </td>
-
-            <%--<td><s:textfield name="customer.sex" ></s:textfield> </td>--%>
-            </tr>
-            <tr>
-                <td>
-                    <h1>住房信息</h1>
-                </td>
-            </tr>
-            <tr>
-                    <%--用传过来的room的信息--%>
-
-                <td><s:hidden name="room.roomId"
-                              value="%{#room.roomId}"></s:hidden> </td>
-            </tr>
-            <tr>
-                <%--用传过来的room的信息--%>
-                <td><s:label value="房 间 号："></s:label></td>
-                <td><s:property value="#room.roomNum"></s:property></td>
-            </tr>
-            <tr>
-                    <%--用传过来的room的信息--%>
-                <td><s:label value="房 间 名："></s:label></td>
-                <td><s:property  value="#room.roomName"></s:property></td>
-            </tr>
-            <tr>
-                    <%--用传过来的room的信息--%>
-                <td><s:label value="价  格："></s:label></td>
-                <td><s:property  value="#room.pricePerNight"></s:property></td>
-            </tr>
-            <tr>
-                <td><s:label value="入住日期："></s:label></td>
-                <td><input type="date" name="dayin" ></td>
-
-            </tr>
-            <tr>
-                <td><s:label value="退房日期："></s:label></td>
-                <td><input type="date" name="dayout" ></td>
-            </tr>
-
-            <tr>
-                <td><s:submit value="提交订单"></s:submit></td>
-            </tr>
-
-        </table>
-
-<%--
-格式化日期的写法,都是struts时才有效果（实验发现）
-<s:date name="onDutyDate" format="yyyy-MM-dd" var="date"></s:date
-<s:textfield name="onDutyDate" value="%{#date}" readonly="true"></s:textfield>
---%>
-    </s:form>
 
 
-<%--//填写订单--%>
-
-
+<h1>请输入查询日期</h1>
+    <form action="${pageContext.servletContext.contextPath}/RoomAction_findAllOrderOrNot">
+        入住日期：<input type="date" name="searchDayIn" required="required">
+        退房日期：<input type="date" name="searchDayOut" required="required">
+        <input type="submit" value="提交">
+    </form>
 </body>
+
+
+
 <!-- js -->
 <script src="js/jquery-2.2.3.min.js"></script>
 <!-- //js -->

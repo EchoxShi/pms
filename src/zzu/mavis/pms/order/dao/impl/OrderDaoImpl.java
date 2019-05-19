@@ -5,6 +5,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import zzu.mavis.pms.order.dao.OrderDao;
 import zzu.mavis.pms.order.domain.Orders;
+import zzu.mavis.pms.room.domain.Room;
 
 import java.util.List;
 
@@ -57,4 +58,18 @@ public class OrderDaoImpl extends HibernateDaoSupport implements OrderDao {
         }
         this.getHibernateTemplate().update(byId);
     }
+
+    //无条件查询出所有订单
+    public List<Orders> findAll(){
+        List<Orders> allOrders = (List<Orders>) this.getHibernateTemplate().findByCriteria(DetachedCriteria.forClass(Orders.class));
+        return allOrders;
+    }
+
+    @Override
+    public List<Orders> findByRoomId(Room r) {
+        DetachedCriteria criteria = DetachedCriteria.forClass(Orders.class);
+        criteria.add(Restrictions.eq("room.roomId",r.getRoomId()));
+        return (List<Orders>) this.getHibernateTemplate().findByCriteria(criteria);
+    }
+
 }

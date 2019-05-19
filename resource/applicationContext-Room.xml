@@ -18,5 +18,6 @@
     </bean>
     <bean id="roomService" class="zzu.mavis.pms.room.service.impl.RoomServiceImpl">
         <property name="roomDao" ref="roomDao"></property>
+        <property name="orderDao" ref="orderDao"></property>
     </bean>
 </beans>

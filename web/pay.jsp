@@ -65,7 +65,7 @@
 					</li>
 
 					<li>
-						<a href="CustomerAction_UILogin" >ToPreserve</a>
+						<a href="chooseDate.jsp" >ToPreserve</a>
 					</li>
 					<li>
 						<a href="openmemb.jsp" >OpenVIP</a>

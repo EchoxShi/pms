@@ -1,5 +1,6 @@
 package zzu.mavis.pms.room.dao;
 
+import zzu.mavis.pms.order.domain.Orders;
 import zzu.mavis.pms.room.domain.Room;
 
 import java.util.List;

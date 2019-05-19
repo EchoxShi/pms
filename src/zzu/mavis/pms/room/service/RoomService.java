@@ -2,6 +2,7 @@ package zzu.mavis.pms.room.service;
 
 import zzu.mavis.pms.room.domain.Room;
 
+import java.util.Date;
 import java.util.List;
 
 public interface RoomService {
@@ -10,5 +11,7 @@ public interface RoomService {
     public List<Room> findById(String id);
     public Room findByRoomId(String id);
     public void updateStatus(Room room);
+    /*public void updateStatusByOrderTime(Date searchDayIn, Date searchDayOut);*/
 
-}
+
+    }

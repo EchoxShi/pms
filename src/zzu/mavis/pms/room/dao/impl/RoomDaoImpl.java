@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import zzu.mavis.pms.order.domain.Orders;
 import zzu.mavis.pms.room.dao.RoomDao;
 import zzu.mavis.pms.room.domain.Room;
 
@@ -36,8 +37,7 @@ public class RoomDaoImpl extends HibernateDaoSupport implements RoomDao {
 
     @Override
     public void update(Room room) {
-        Session session = getSessionFactory().openSession();
-        session.saveOrUpdate(room);
+        this.getHibernateTemplate().saveOrUpdate(room);
     }
 
     @Override
@@ -58,5 +58,6 @@ public class RoomDaoImpl extends HibernateDaoSupport implements RoomDao {
         }
         return null;
     }
+
 
 }

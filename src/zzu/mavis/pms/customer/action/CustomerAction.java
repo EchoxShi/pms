@@ -11,6 +11,7 @@ import zzu.mavis.pms.roomType.service.RoomTypeService;
 import zzu.mavis.pms.customer.domain.Customer;
 import zzu.mavis.pms.customer.service.CustomerService;
 
+import java.util.Date;
 import java.util.List;
 
 public class CustomerAction extends ActionSupport  implements ModelDriven<Customer> {
@@ -76,14 +77,10 @@ public class CustomerAction extends ActionSupport  implements ModelDriven<Custom
             addActionMessage("该用户不存在！");
             return "tologin";
         }
-
         if( !customer.getLoginPassword().trim().equals(byName.getLoginPassword())){
            addActionMessage("密码错误！");
            return "tologin";
         }
-        //似乎没用到，应该把用户信息放入session
-        ValueStack valueStack = ActionContext.getContext().getValueStack();
-        valueStack.push(customer);
         //把用户信息放入session
         ActionContext.getContext().getSession().put("byName",byName);
         return "UILogin";
@@ -91,7 +88,6 @@ public class CustomerAction extends ActionSupport  implements ModelDriven<Custom
     }
 
     public String UILogin(){
-
         //查询所有的房间，放入值栈
         List<Room> roomList = roomService.findAll();
         ActionContext.getContext().getValueStack().set("roomList",roomList);

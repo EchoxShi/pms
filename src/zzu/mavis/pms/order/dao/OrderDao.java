@@ -2,6 +2,7 @@ package zzu.mavis.pms.order.dao;
 
 
 import zzu.mavis.pms.order.domain.Orders;
+import zzu.mavis.pms.room.domain.Room;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public interface OrderDao  {
 //改变订单状态
     public void updateStatus(String oid);
     public void updateOver(String oid) ;
-
-
+//无条件查询出所有订单
+    public List<Orders> findAll();
+    public List<Orders> findByRoomId(Room r);
 }

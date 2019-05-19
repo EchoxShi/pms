@@ -74,7 +74,7 @@
 
 
 					<li>
-						<a href="CustomerAction_UILogin" >ToPreserve</a>
+						<a href="chooseDate.jsp" >ToPreserve</a>
 					</li>
 					<li>
 						<a href="openmemb.jsp" >OpenVIP</a>
@@ -135,7 +135,13 @@
 							<s:if test="member.memtype==1">
 								积分型
 							</s:if>
-							储值型
+							<s:if test="member.memtype==2">
+								储值型
+							</s:if>
+							<s:if test="member.memtype==null">
+								非会员
+							</s:if>
+
 							</td>
 						<td><s:property value="member.mon"></s:property></td>
 						<td><s:property value="member.remain"></s:property></td>
