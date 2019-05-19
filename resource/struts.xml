@@ -17,6 +17,8 @@
     <include file="struts-RoomType.xml"></include>
     <include file="struts-Order.xml"></include>
     <include file="struts-Comment.xml"></include>
+    <include file="struts-Member.xml"></include>
+
 
 
 </struts>

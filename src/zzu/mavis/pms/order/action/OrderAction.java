@@ -5,6 +5,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import zzu.mavis.pms.customer.domain.Customer;
 import zzu.mavis.pms.customer.service.CustomerService;
+import zzu.mavis.pms.member.domain.Member;
+import zzu.mavis.pms.member.service.MemberService;
 import zzu.mavis.pms.order.domain.Orders;
 import zzu.mavis.pms.order.service.OrderService;
 import zzu.mavis.pms.room.domain.Room;
@@ -17,6 +19,11 @@ import java.util.logging.SimpleFormatter;
 
 public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
     private OrderService orderService;
+    private MemberService memberService;
+
+    public void setMemberService(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
     public void setOrderService(OrderService orderService) {
         this.orderService = orderService;
@@ -49,15 +56,44 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
         Room room = roomService.findByRoomId(orders.getRoom().getRoomId());
         orders.setCustomer(customer);
         orders.setRoom(room);
-        //计算总价
+
+        //先查出会员类型，再确定如何计算（这里只考虑储值型会员）
+        Member member = memberService.findByCst(customer);
+        Double mony =member.getMon();
+        Double remain= member.getRemain();
+        //计算折扣
+        double zhekou=1;
+        if(null!=mony){
+            if(mony==5000){
+               zhekou=0.9;
+            }
+            if(mony==4000){
+                zhekou=0.93;
+            }
+            if(mony==3000){
+                zhekou=0.95;
+            }
+            if(mony==2000){
+                zhekou=0.97;
+            }
+            if(mony==1000){
+                zhekou=0.99;
+            }
+        }
+
+        //计算总价money
         Date dayin = orders.getDayin();
         Date dayout = orders.getDayout();
         long from = dayin.getTime();
         long to = dayout.getTime();
         int days = (int) ((to - from)/(1000 * 60 * 60 * 24));
-        Double money =days *(Double) room.getPricePerNight();
-
+        Double money =(days *(Double) room.getPricePerNight())*zhekou;
         orders.setMony(money);
+
+        remain=remain-money;
+        member.setRemain(remain);
+        memberService.add(member);//savaOrUpdate()
+
         orderService.add(orders);
         System.out.println(orders.getOid());
 

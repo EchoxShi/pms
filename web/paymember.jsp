@@ -2,9 +2,8 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html >
-
 <title>
-	付款
+	开通会员
 </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -34,7 +33,6 @@
 <link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 <!-- //web-fonts -->
-
 <body>
 <!-- banner -->
 <div class="header" style="background-color:black;position: relative">
@@ -63,6 +61,7 @@
 					<li>
 						<a href="comment.jsp" >Comment</a>
 					</li>
+
 
 					<li>
 						<a href="CustomerAction_UILogin" >ToPreserve</a>
@@ -108,8 +107,10 @@
 
 <!-- //banner -->
 <h1>付款页面</h1>
+<h1>您此次选择的充值金额是<s:property value="mon"></s:property></h1>
 <h1>正在付款。。。。。。。。</h1>
-<h1>付款成功，点此返回查看<s:a action="OrderAction_findByctmId">我的订单</s:a></h1>
+<h1>付款成功，点此查看
+	<s:a action="MemberAction_UImymember" >我的会员情况</s:a></h1>
 
 </body>
 <!-- js -->

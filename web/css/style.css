@@ -44,7 +44,7 @@ body a:hover {
 /*-- banner --*/
 
 .header {
-    position: absolute;
+    /*position: absolute;*/
     width: 100%;
     padding-top: 2em;
 }

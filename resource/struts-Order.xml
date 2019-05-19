@@ -10,7 +10,7 @@
         <result name="topay" type="redirect">OrderAction_findByctmId</result>
         <result name="findByctmId" >/orderlist.jsp</result>
         <result name="gopay" >/pay.jsp</result>
-        <result name="check">/index.jsp</result>
+        <result name="check">/comment.jsp</result>
     </action>
 </package>
 

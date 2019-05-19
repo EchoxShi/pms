@@ -28,6 +28,7 @@
             <one-to-many class="zzu.mavis.pms.order.domain.Orders"></one-to-many>
         </set>
 
+        <one-to-one name="member" class="zzu.mavis.pms.member.domain.Member" cascade="save-update"></one-to-one>
 
     </class>
 </hibernate-mapping>

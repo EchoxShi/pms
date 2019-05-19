@@ -4,7 +4,7 @@
 <html >
 
 <head>
-	<title>Home</title>
+	<title>roomlist</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
@@ -53,7 +53,7 @@
 								<span class="icon-bar"></span>
 							</button>
 							<h1>
-								<a href="login.jsp">zoom</a>
+								<a href="/index.jsp">zoom</a>
 							</h1>
 						</div>
 						<!-- Collect the nav links, forms, and other content for toggling -->
@@ -65,19 +65,37 @@
 								<li>
 									<a href="comment.jsp" >Comment</a>
 								</li>
-
 								<li>
-									<a href="#team" >Team</a>
+									<a href="CustomerAction_UILogin" >ToPreserve</a>
 								</li>
 
+
+									<li>
+										<a href="openmemb.jsp" >OpenVIP</a>
+									</li>
+									<li>
+										<a href="MemberAction_UImymember" >myVIP</a>
+									</li>
 								<li>
-									<a href="login.jsp" >Login In</a>
+									<a href="OrderAction_findByctmId" >myOrder</a>
 								</li>
-								<li>
-									<a href="registe.jsp">Registe</a>
-								</li>
+
+								<s:if test="%{#session.byName}==null">
+									<li>
+										<a href="login.jsp" >Login In</a>
+									</li>
+									<li>
+										<a href="registe.jsp">Registe</a>
+									</li>
+								</s:if>
+								<s:else>
+									<li>
+										<a href="index.jsp" >Exit</a>
+									</li>
+								</s:else>
+
                                 <li>
-                                   <a href="#">hello!${loginName}</a>
+                                   <a href="#">hello!   ${sessionScope.byName.loginName}</a>
                                 </li>
 							</ul>
 							<div class="clearfix"> </div>
@@ -187,9 +205,13 @@
 	</div>
 	<!-- //gallery -->
 
+<div id="searchCondition" >
+查询条件：入住时间：<input type="date" name="searchDayIn">退房时间<input type="date" name="searchDayOut">
+</div>
 <div id="list" style="width: 100%;height: auto;background: url('images/bggg.jpg') no-repeat;opacity: 0.5">
 
 <div id="roomtypelistbar" style=" background-color: #3d3d3d;">
+	<%--房间类型列表--%>
 
 	<s:iterator value="roomTypeList" >
 		<div id="rt" style="display: inline;border: double white;font-family: '微软雅黑 Light';font-size: 15mm;padding:0px 30px;">
@@ -200,6 +222,9 @@
 		</div>
 
 	</s:iterator>
+
+		<%--//房间类型列表--%>
+
 </div>
 	<%--房间列表--%>
 

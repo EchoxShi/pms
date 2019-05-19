@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="zzu.mavis.pms.member.domain.Member" table="t_member">
+        <id name="memid">
+            <generator class="uuid"></generator>
+        </id>
+
+        <property name="memtype" type="int"></property>
+        <property name="mon" type="java.lang.Double"></property>
+        <property name="remain" type="java.lang.Double"></property>
+
+        <property name="score" type="int"></property>
+
+        <many-to-one name="customer" class="zzu.mavis.pms.customer.domain.Customer" column="ctmId" unique="true"></many-to-one>
+
+    </class>
+</hibernate-mapping>

@@ -23,11 +23,10 @@
 	<!-- //web-fonts -->
 </head>
 <body>
-
-<<!-- banner -->
-<div class="header">
+<!-- banner -->
+<div class="header" style="background-color:black">
 	<!-- header -->
-	<nav class="navbar navbar-default" style="background-color: black;">
+	<nav class="navbar navbar-default">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -39,7 +38,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<h1>
-					<a href="login.jsp">zoom</a>
+					<a href="/index.jsp">zoom</a>
 				</h1>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,21 +48,38 @@
 						<a href="login.jsp" class="nav-hover active">Home</a>
 					</li>
 					<li>
-						<a href="/comment.jsp" class="btn nav-hover scroll">Comment</a>
+						<a href="comment.jsp" >Comment</a>
+					</li>
+					<li>
+						<a href="CustomerAction_UILogin" >ToPreserve</a>
+					</li>
+					<li>
+						<a href="openmemb.jsp" >OpenVIP</a>
+					</li>
+					<li>
+						<a href="MemberAction_UImymember" >myVIP</a>
 					</li>
 
 					<li>
-						<a href="#team" class="btn nav-hover scroll">Team</a>
+						<a href="OrderAction_findByctmId" >myOrder</a>
 					</li>
 
+					<s:if test="%{#session.byName}==null">
+						<li>
+							<a href="login.jsp" >Login In</a>
+						</li>
+						<li>
+							<a href="registe.jsp">Registe</a>
+						</li>
+					</s:if>
+					<s:else>
+						<li>
+							<a href="index.jsp" >Exit</a>
+						</li>
+					</s:else>
+
 					<li>
-						<a href="login.jsp" >Login In</a>
-					</li>
-					<li>
-						<a href="registe.jsp">Registe</a>
-					</li>
-					<li>
-						<a href="#">hello!${loginName}</a>
+						<a href="#">hello!   ${sessionScope.byName.loginName}</a>
 					</li>
 				</ul>
 				<div class="clearfix"> </div>
@@ -79,9 +95,7 @@
 
 <!-- //banner -->
 
-
-
-<div style="font-size :15px;width: 100%;height: 900px;padding: 50px;border: #3d3d3d double;position: center;margin-top: 50px;background-image: url('images/bggg.jpg');opacity: 0.5">
+<div style="font-size :15px;width: 100%;height: 900px;padding: 200px;border: #3d3d3d double;position: center;background-image: url('images/bggg.jpg');">
 <%--房间详情--%>
 
 

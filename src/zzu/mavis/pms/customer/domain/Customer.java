@@ -1,5 +1,6 @@
 package zzu.mavis.pms.customer.domain;
 
+import zzu.mavis.pms.member.domain.Member;
 import zzu.mavis.pms.order.domain.Orders;
 
 import java.util.Date;
@@ -21,6 +22,16 @@ public class Customer {
     private String sex;
 //一个顾客  有 多个订单
     private Set<Orders> ordersSet =new HashSet<>();
+//一个顾客有一个会员标志
+    private Member member;
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public Member getMember() {
+        return member;
+    }
 
     public Set<Orders> getOrdersSet() {
         return ordersSet;

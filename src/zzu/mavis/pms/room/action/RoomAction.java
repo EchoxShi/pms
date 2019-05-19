@@ -8,13 +8,32 @@ import zzu.mavis.pms.room.service.RoomService;
 import zzu.mavis.pms.roomType.domain.RoomType;
 import zzu.mavis.pms.roomType.service.RoomTypeService;
 
+import java.util.Date;
 import java.util.List;
 
 public class RoomAction extends ActionSupport implements ModelDriven<Room> {
-
+    //查询房间时间的字段
+    private Date searchDayIn;
+    private Date searchDayOut;
 //    private File pic;
 //    private String picFileName;
 //    private String picContentType;
+
+    public Date getSearchDayIn() {
+        return searchDayIn;
+    }
+
+    public void setSearchDayIn(Date searchDayIn) {
+        this.searchDayIn = searchDayIn;
+    }
+
+    public Date getSearchDayOut() {
+        return searchDayOut;
+    }
+
+    public void setSearchDayOut(Date searchDayOut) {
+        this.searchDayOut = searchDayOut;
+    }
 
     private RoomService roomService;
 

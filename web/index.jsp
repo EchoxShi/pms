@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -267,66 +268,19 @@ font {
 		<h3 class="sec-title">what people
 			<span>are saying?</span>
 		</h3>
-		<div class="container">
+
 			<!-- Owl-Carousel -->
-			<div id="owl-demo" class="owl-carousel text-center clients-right">
-				<div class="item g1">
-					<div class="testi-caption">
-						<h4>John Smith</h4>
-						<span>Lorem Ipsum</span>
-					</div>
-					<div class="clearfix"></div>
-					<p>
-						<span class="fa fa-quote-left" aria-hidden="true"></span>Duis nulla nulla, faucibus id diam ac, luctus sodales purus. Quisque nibh ipsum,Ut accumsan.</p>
-				</div>
-				<div class="item g1">
-					<div class="testi-caption">
-						<h4>Jecy Deoco</h4>
-						<span>Lorem Ipsum</span>
-					</div>
-					<div class="clearfix"></div>
-					<p>
-						<span class="fa fa-quote-left" aria-hidden="true"></span>Duis nulla nulla, faucibus id diam ac, luctus sodales purus. Quisque nibh ipsum,Ut accumsan.</p>
-				</div>
-				<div class="item g1">
-					<div class="testi-caption">
-						<h4>Devid Fahim</h4>
-						<span>Lorem Ipsum</span>
-					</div>
-					<div class="clearfix"></div>
-					<p>
-						<span class="fa fa-quote-left" aria-hidden="true"></span>Duis nulla nulla, faucibus id diam ac, luctus sodales purus. Quisque nibh ipsum,Ut accumsan.</p>
-				</div>
-				<div class="item g1">
-					<div class="testi-caption">
-						<h4>Honey Jisa</h4>
-						<span>Lorem Ipsum</span>
-					</div>
-					<div class="clearfix"></div>
-					<p>
-						<span class="fa fa-quote-left" aria-hidden="true"></span>Duis nulla nulla, faucibus id diam ac, luctus sodales purus. Quisque nibh ipsum,Ut accumsan.</p>
-				</div>
-				<div class="item g1">
-					<div class="testi-caption">
-						<h4>Jecy Deoco</h4>
-						<span>Lorem Ipsum</span>
-					</div>
-					<div class="clearfix"></div>
-					<p>
-						<span class="fa fa-quote-left" aria-hidden="true"></span>Duis nulla nulla, faucibus id diam ac, luctus sodales purus. Quisque nibh ipsum,Ut accumsan.</p>
-				</div>
-				<div class="item g1">
-					<div class="testi-caption">
-						<h4>Devid Fahim</h4>
-						<span>Lorem Ipsum</span>
-					</div>
-					<div class="clearfix"></div>
-					<p>
-						<span class="fa fa-quote-left" aria-hidden="true"></span>Duis nulla nulla, faucibus id diam ac, luctus sodales purus. Quisque nibh ipsum,Ut accumsan.</p>
-				</div>
+			<s:iterator value="allComment">
+
+			<div style="width: 100%;height: 50px;padding: 10px 50px;background-color: #9bbaab;margin: 30px ">
+				<h1><s:property value="content"></s:property></h1>
+
 			</div>
+
+			</s:iterator>
+
 			<!--// Owl-Carousel -->
-		</div>
+
 	</div>
 	<!--// Clients -->
 	</div>

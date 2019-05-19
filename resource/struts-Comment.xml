@@ -7,8 +7,8 @@
 
 <package name="comt" extends="common" namespace="/">
     <action name="CommentAction_*" class="zzu.mavis.pms.comment.action.CommentAction" method="{1}">
-        <result name="toindex">/index.jsp</result>
-
+        <result name="toindex" type="redirect">CommentAction_UIToindex</result>
+        <result name="UIToindex">/index.jsp</result>
     </action>
 </package>
 

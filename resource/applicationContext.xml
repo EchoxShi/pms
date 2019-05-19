@@ -53,6 +53,8 @@
             <tx:method name="find*"></tx:method>
             <tx:method name="login*"></tx:method>
             <tx:method name="registe*"></tx:method>
+            <tx:method name="*"></tx:method>
+
         </tx:attributes>
     </tx:advice>
 
@@ -66,7 +68,7 @@
     <import resource="classpath:applicationContext-Customer.xml"></import>
     <import resource="applicationContext-Order.xml"></import>
     <import resource="applicationContext-RoomType.xml"></import>
-    <!--<import resource="applicationContext-Member.xml"></import>-->
+    <import resource="applicationContext-Member.xml"></import>
     <import resource="applicationContext-Room.xml"></import>
 
 

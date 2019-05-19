@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+<package name="mem" extends="common" namespace="/">
+    <action name="MemberAction_*" class="zzu.mavis.pms.member.action.MemberAction" method="{1}">
+        <!--开通储值型会员，开通完成后直接跳进  我的会员 页面 去查看自己的 会员详细状况-->
+
+        <result name="openMonMem" type="redirect">MemberAction_findByCst</result>
+        <result name="findByCst">/paymember.jsp</result>
+        <!--开通积分型会员，开通完成后直接跳进roomlist 去浏览 预定房间-->
+        <result name="UILogin"  type="redirect">CustomerAction_UILogin</result>
+        <result name="UImymember">/mymember.jsp</result>
+
+    </action>
+</package>
+
+
+</struts>

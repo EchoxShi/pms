@@ -23,6 +23,7 @@
             <file>file://$MODULE_DIR$/resource/struts-RoomType.xml</file>
             <file>file://$MODULE_DIR$/resource/struts-Order.xml</file>
             <file>file://$MODULE_DIR$/resource/struts-Comment.xml</file>
+            <file>file://$MODULE_DIR$/resource/struts-Member.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -36,6 +37,7 @@
           <file>file://$MODULE_DIR$/resource/applicationContext-RoomType.xml</file>
           <file>file://$MODULE_DIR$/resource/applicationContext-Order.xml</file>
           <file>file://$MODULE_DIR$/resource/applicationContext-Comment.xml</file>
+          <file>file://$MODULE_DIR$/resource/applicationContext-Member.xml</file>
         </fileset>
       </configuration>
     </facet>
