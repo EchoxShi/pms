@@ -46,7 +46,7 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
         return orders;
     }
 
-    public String  add(){
+    public String  add() {
         Customer customer = (Customer) ActionContext.getContext().getSession().get("byName");
         System.out.println(orders.getOid());
         customer.setIdCard(orders.getCustomer().getIdCard());
@@ -60,29 +60,29 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
         //先查出会员类型，再确定如何计算（这里只考虑储值型会员）
         Member member = memberService.findByCst(customer);
         //如果该顾客尚未注册会员
-        double zhekou=1;
-        Double mony=null;
-        Double remain=null;
-        if(null!=member){
-             mony =member.getMon();
-             remain= member.getRemain();
-            if(null!=mony){
+        double zhekou = 1;
+        Double mony = null;
+        Double remain = null;
+        if (null != member) {
+            mony = member.getMon();
+            remain = member.getRemain();
+            if (null != mony) {
                 //计算折扣
 
-                if(mony==5000){
-                    zhekou=0.9;
+                if (mony == 5000) {
+                    zhekou = 0.9;
                 }
-                if(mony==4000){
-                    zhekou=0.93;
+                if (mony == 4000) {
+                    zhekou = 0.93;
                 }
-                if(mony==3000){
-                    zhekou=0.95;
+                if (mony == 3000) {
+                    zhekou = 0.95;
                 }
-                if(mony==2000){
-                    zhekou=0.97;
+                if (mony == 2000) {
+                    zhekou = 0.97;
                 }
-                if(mony==1000){
-                    zhekou=0.99;
+                if (mony == 1000) {
+                    zhekou = 0.99;
                 }
             }
         }
@@ -92,21 +92,26 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
         Date dayout = orders.getDayout();
         long from = dayin.getTime();
         long to = dayout.getTime();
-        int days = (int) ((to - from)/(1000 * 60 * 60 * 24));
-        Double money =(days *(Double) room.getPricePerNight())*zhekou;
+        int days = (int) ((to - from) / (1000 * 60 * 60 * 24));
+        Double money = (days * (Double) room.getPricePerNight()) * zhekou;
         orders.setMony(money);
 
-        if(null!=member){
-            remain=remain-money;
-            member.setRemain(remain);
-            memberService.add(member);//savaOrUpdate()
+        if (null != member) {
+            if (remain >= money) {
+                remain = remain - money;
+                member.setRemain(remain);
+                memberService.add(member);//savaOrUpdate()
+                orderService.add(orders);
+                return "topay";
+            } else {
+                //余额不够！
+                addActionMessage("余额不够，无法使用会员储值卡付款，请及时充值!");
+                return "fail";
+            }
 
         }
+        return null;
 
-        orderService.add(orders);
-        System.out.println(orders.getOid());
-
-        return "topay";
     }
 
     public String findByctmId(){

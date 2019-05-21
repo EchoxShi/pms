@@ -11,7 +11,7 @@
 
         <set name="rooms">
             <key column="roomTypeId"></key>
-            <one-to-many class="zzu.mavis.pms.room.domain.Room"></one-to-many>
+            <one-to-many class="zzu.mavis.pms.room.domain.Room" ></one-to-many>
         </set>
 
 

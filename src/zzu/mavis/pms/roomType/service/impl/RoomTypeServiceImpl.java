@@ -18,4 +18,19 @@ public class RoomTypeServiceImpl implements RoomTypeService {
         return roomTypeDao.findAll();
 
     }
+
+    @Override
+    public void delete(String id) {
+        roomTypeDao.deleteById(id);
+    }
+
+    @Override
+    public RoomType findById(String id) {
+        return roomTypeDao.findById(id);
+    }
+
+    @Override
+    public void add(RoomType roomType) {
+        roomTypeDao.add(roomType);
+    }
 }

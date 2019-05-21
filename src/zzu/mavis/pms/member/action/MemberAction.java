@@ -37,8 +37,8 @@ public class MemberAction extends ActionSupport  implements ModelDriven<Member> 
         Member memberbyCst = memberService.findByCst(byName);
         if(null!=memberbyCst){
             ActionContext.getContext().getValueStack().push(byName);
-            addActionMessage("您已经注册过会员！");
-            return "UImymember";
+           ActionContext.getContext().getSession().put("msg","您已经开通过会员！");
+            return "hasOpened";
         }
 
         //如果 memtype=1
@@ -69,6 +69,7 @@ public class MemberAction extends ActionSupport  implements ModelDriven<Member> 
         return "findByCst";
     }
     public String  UImymember(){
+
         Customer customer = (Customer) ActionContext.getContext().getSession().get("byName");
         //查出所有的order
         List<Orders> orders = orderService.findByctmId(customer.getCtmId());

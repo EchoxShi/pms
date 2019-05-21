@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+<package name="adroom" extends="common" namespace="/">
+    <action name="adminRoomAction_*" class="zzu.mavis.pms.admin.action.RoomAction" method="{1}">
+        <result name="findAllRoom" >/admin/roomlist.jsp</result>
+        <result name="add"  type="redirect" >adminRoomAction_findAllRoom</result>
+        <result name="UIadd"  >/admin/addroom.jsp</result>
+        <result name="deleteByRoomId" >/admin/tip/deleteSucc.jsp</result>
+        <result name="UIupdate"  >/admin/updateroom.jsp</result>
+        <result name="update" type="redirect"  >adminRoomAction_findAllRoom</result>
+
+    </action>
+</package>
+
+
+</struts>

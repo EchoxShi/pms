@@ -182,11 +182,11 @@
 			<input type="submit" height="30px" width="50px" value="确认开通">
 		</span>
 		<div id="t" class="t">
-			<input  name="mon" type="radio" value="1000"/>1000<br>
-			<input  name="mon" type="radio" value="2000"/>2000<br>
-			<input  name="mon" type="radio" value="3000"/>3000<br>
-			<input  name="mon" type="radio" value="4000"/>4000<br>
-			<input  name="mon" type="radio" value="5000"/>5000<br>
+			<input  name="mon" type="radio" value="1000" required="required"/>1000<br>
+			<input  name="mon" type="radio" value="2000" required="required"/>2000<br>
+			<input  name="mon" type="radio" value="3000" required="required"/>3000<br>
+			<input  name="mon" type="radio" value="4000" required="required"/>4000<br>
+			<input  name="mon" type="radio" value="5000" required="required"/>5000<br>
 
 <%--目前在这个页面不能 先开通积分型 ，再开通 储值型，因为外键不能重复，稍后进行容错处理--%>
 		</div>

@@ -11,6 +11,8 @@
         <result name="findByctmId" >/orderlist.jsp</result>
         <result name="gopay" >/pay.jsp</result>
         <result name="check">/comment.jsp</result>
+        <result name="fail">/fail.jsp</result>
+
     </action>
 </package>
 

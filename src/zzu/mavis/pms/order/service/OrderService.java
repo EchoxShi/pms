@@ -20,4 +20,12 @@ public interface OrderService {
     //无条件查询出所有订单
     public List<Orders> findAll();
     public boolean isOrdered(Date searchDayIn, Date searchDayOut, Room r);
+    //未付款，   payStatus 1 代表已完成付款，0 代表未完成付款，
+    // ，over 1 代表该订单已经完成，0代表该订单未完成,默认为0
+
+    public List<Orders> findAllNoPay();
+
+    public List<Orders> findAllOver();
+
+    public List<Orders> findAllDoing();
 }

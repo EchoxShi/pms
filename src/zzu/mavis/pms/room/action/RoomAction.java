@@ -183,11 +183,11 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room> {
         ActionContext.getContext().getValueStack().set("roomTypeList",roomTypeList);
         return "findById";
     }
-//    public String findRoomById(){
-//        Room room1 = roomService.findByRoomId(this.room.getRoomId());
-//        ActionContext.getContext().put("room", room1);
-//        return "findRoomById";
-//    }
+    public String findRoomById(){
+        Room room1 = roomService.findByRoomId(this.room.getRoomId());
+        ActionContext.getContext().put("room", room1);
+        return "findRoomById";
+    }
     public String UIPreserve(){
         ActionContext.getContext().getValueStack().
                 push(ActionContext.getContext().getSession().get("byName"));

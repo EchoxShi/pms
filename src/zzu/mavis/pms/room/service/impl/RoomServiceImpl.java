@@ -2,6 +2,7 @@ package zzu.mavis.pms.room.service.impl;
 
 import zzu.mavis.pms.order.dao.OrderDao;
 import zzu.mavis.pms.order.domain.Orders;
+import zzu.mavis.pms.pages.PageBean;
 import zzu.mavis.pms.room.dao.RoomDao;
 import zzu.mavis.pms.room.domain.Room;
 import zzu.mavis.pms.room.service.RoomService;
@@ -44,6 +45,29 @@ public class RoomServiceImpl  implements RoomService {
     public void updateStatus(Room room) {
         roomDao.updateStatus(room);
     }
+
+    @Override
+    public PageBean<Room> findAllTP(int pageNum, int pageSize) {
+        //pageNum和PageSize是从页面穿过来的，然后调用dao的getTotalRecord和findall得到  totalrecord 和data 就能封装好一个
+        //pageBean来返回给  jsp页面了
+        int totalRecord = roomDao.getTotalRecord();
+        PageBean<Room> pageBean = new PageBean<Room>(pageNum,pageSize,totalRecord );
+        List<Room> data = roomDao.findAllToPage(pageBean.getStartIndex(),pageBean.getPageSize());
+        pageBean.setData(data);
+        return pageBean;
+    }
+
+    @Override
+    public void deleteByRoomId(String id) {
+        roomDao.deleteByRoomId(id);
+    }
+
+    @Override
+    public void update(Room room) {
+        roomDao.update(room);
+    }
+
+
     //根据 查询出来的所有订单的时间 来改变每个房间的状态
     //参数 ：searchDayIn  页面上传过来的搜索的起始时间  searchDayOut  截止时间
 /*

@@ -32,11 +32,12 @@ public class RoomDaoImpl extends HibernateDaoSupport implements RoomDao {
 
     @Override
     public void delete(Room room) {
-        getSessionFactory().openSession().delete(room);
+        this.getHibernateTemplate().delete(room);
     }
 
     @Override
     public void update(Room room) {
+
         this.getHibernateTemplate().saveOrUpdate(room);
     }
 
@@ -57,6 +58,29 @@ public class RoomDaoImpl extends HibernateDaoSupport implements RoomDao {
             return byRoomId.get(0);
         }
         return null;
+    }
+
+
+//以下用于分页
+    @Override
+    public List<Room> findAllToPage(int startIndex, int pageSize) {
+        //查出每页要显示的数据
+        DetachedCriteria detachedCriteria= DetachedCriteria.forClass(Room.class);
+        List<Room> rooms= (List<Room>) this.getHibernateTemplate().findByCriteria(detachedCriteria, startIndex, pageSize);
+        return rooms;
+    }
+
+    @Override
+    public int getTotalRecord() {
+        DetachedCriteria detachedCriteria= DetachedCriteria.forClass(Room.class);
+        List<Room> rooms= (List<Room>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
+        return rooms.size();
+    }
+
+    @Override
+    public void deleteByRoomId(String id) {
+        Room byRoomId = findByRoomId(id);
+        this.getHibernateTemplate().delete(byRoomId);
     }
 
 

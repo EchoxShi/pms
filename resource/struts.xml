@@ -18,6 +18,11 @@
     <include file="struts-Order.xml"></include>
     <include file="struts-Comment.xml"></include>
     <include file="struts-Member.xml"></include>
+    <include file="struts-AdminRoom.xml"></include>
+    <include file="struts-AdminRoomType.xml"></include>
+    <include file="struts-AdminOrder.xml"></include>
+    <include file="struts-AdminMember.xml"></include>
+
 
 
 

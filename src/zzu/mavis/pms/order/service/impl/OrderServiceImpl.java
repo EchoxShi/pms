@@ -75,6 +75,20 @@ public class OrderServiceImpl implements OrderService {
         }
         return flag;
     }
+//未付款，   payStatus 1 代表已完成付款，0 代表未完成付款，
+    // ，over 1 代表该订单已经完成，0代表该订单未完成,默认为0
 
+    public List<Orders> findAllNoPay(){
+        return orderDao.findAllNoPay();
+
+    }
+
+    public List<Orders> findAllOver(){
+        return orderDao.findAllOver();
+    }
+
+    public List<Orders> findAllDoing(){
+        return orderDao.findAllDoing();
+    }
 
 }

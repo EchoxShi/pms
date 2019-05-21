@@ -124,7 +124,7 @@
 		<s:form>
 			<table border="1" style="width: 1200px;height: 20px;position: center">
 				<tr>
-					<s:actionmessage></s:actionmessage>
+					<font color="red">${msg}</font>
 					<td>会员编号</td><td>会员类型</td><td>充值金额</td><td>所剩金额</td>
 
 				</tr>

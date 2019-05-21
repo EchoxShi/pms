@@ -9,4 +9,5 @@ public interface RoomTypeDao {
     public List<RoomType> findAll();
     public void deleteById(String id);
     public void update(RoomType roomType);
+    public RoomType findById(String id);
 }

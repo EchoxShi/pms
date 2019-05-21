@@ -22,4 +22,16 @@ public class MemberDaoImpl  extends HibernateDaoSupport implements MemberDao {
         }
         return null;
     }
+
+    @Override
+    public List<Member> findAll1() {
+        List<Member> memtype = (List<Member>) this.getHibernateTemplate().findByCriteria(DetachedCriteria.forClass(Member.class).add(Restrictions.eq("memtype", 1)));
+        return  memtype;
+    }
+
+    @Override
+    public List<Member> findAll2() {
+        List<Member> memtype = (List<Member>) this.getHibernateTemplate().findByCriteria(DetachedCriteria.forClass(Member.class).add(Restrictions.eq("memtype", 2)));
+        return  memtype;
+    }
 }

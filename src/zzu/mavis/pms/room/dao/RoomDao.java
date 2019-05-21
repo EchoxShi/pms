@@ -18,4 +18,9 @@ public interface RoomDao {
 
     public Room findByRoomId(String id);
 
+//以下用于分页
+    public List<Room> findAllToPage(int startIndex, int pageSize);
+    public int getTotalRecord() ;
+    public void deleteByRoomId(String id);
+
 }

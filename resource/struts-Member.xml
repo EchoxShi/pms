@@ -15,6 +15,8 @@
         <result name="UILogin"  type="redirect">CustomerAction_UILogin</result>
         <result name="UImymember">/mymember.jsp</result>
 
+        <result name="hasOpened"  type="redirect">MemberAction_UImymember</result>
+
     </action>
 </package>
 

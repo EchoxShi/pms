@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <html >
 
 <head>
@@ -78,9 +78,9 @@ font {
 
 <body>
 	<!-- banner -->
-	<div class="banner">
+	<div class="banner" >
 		<div class="cd-radial-slider-wrapper">
-			<div class="header">
+			<div class="header" >
 				<!-- header -->
 				<nav class="navbar navbar-default">
 					<div class="container">
