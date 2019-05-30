@@ -40,7 +40,7 @@
            	<table class="gallery table table_list table_striped table-bordered " id="">
 				<tr>
 					<font color="red">${msg}</font>
-					<td>会员编号</td><td>会员类型</td><td>充值金额</td><td>所剩金额</td>
+					<td>会员编号</td><td>会员类型</td><td>充值金额</td><td>所剩金额</td><td>当前积分</td>
 
 				</tr>
 				<s:iterator value="memberList"></s:iterator>
@@ -53,13 +53,15 @@
 						<s:if test="memtype==2">
 							储值型
 						</s:if>
-						<s:if test="memtype==null">
+						<s:if test="memtype==0">
 							非会员
 						</s:if>
 
 					</td>
-					<td><s:property value="mon"></s:property></td>
-					<td><s:property value="remain"></s:property></td>
+						<td><s:property value="mon"></s:property></td>
+						<td><s:property value="remain"></s:property></td>
+
+						<td><s:property value="score"></s:property></td>
 
 				</tr>
            	</table>

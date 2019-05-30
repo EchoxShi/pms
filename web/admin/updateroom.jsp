@@ -43,7 +43,7 @@
 				  <tr>
 					  <s:hidden name="roomId" value="%{roomId}"></s:hidden>
 					  <td>图片：</td>
-					  <td><input type="file" name="myfile" value="选择图片">
+					  <td><input type="file" name="myfile" value="选择图片" >
 						  <img src="${pageContext.servletContext.contextPath}/<s:property value='%{picPath}'></s:property>"  width="100px" height="100px"/>
 					  </td>
 				  </tr>

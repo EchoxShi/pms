@@ -19,15 +19,15 @@
 		}
 	</script>
 	<!-- Custom Theme files -->
-	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-	<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all" />
+	<link href="${pageContext.request.contextPath}/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.css" type="text/css" media="all" />
 	<!--// Owl-Carousel-CSS -->
-	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-	<link href="css/slider.css" type="text/css" rel="stylesheet" media="all">
-	<link href='css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
+	<link href="${pageContext.request.contextPath}/css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link href="${pageContext.request.contextPath}/css/slider.css" type="text/css" rel="stylesheet" media="all">
+	<link href='${pageContext.request.contextPath}/css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
 	<!-- //Custom Theme files -->
 	<!-- font-awesome icons -->
-	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet">
 	<!-- //font-awesome icons -->
 
 	<!-- web-fonts -->
@@ -82,7 +82,7 @@ font {
 		<div class="cd-radial-slider-wrapper">
 			<div class="header" >
 				<!-- header -->
-				<nav class="navbar navbar-default">
+				<nav class="navbar navbar-default" style="height:80px;position:absolute;top:40px;left:50px;">
 					<div class="container">
 						<!-- Brand and toggle get grouped for better mobile display -->
 						<div class="navbar-header">
@@ -101,7 +101,7 @@ font {
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav nav-center">
 								<li>
-									<a href="index.jsp" class="nav-hover active">Home</a>
+									<a href="${pageContext.request.contextPath}/index.jsp" class="nav-hover active">Home</a>
 								</li>
 								<li>
 									<a href="comment.jsp" class="btn nav-hover scroll">Comment</a>
@@ -117,10 +117,10 @@ font {
 									<a href="#contact" class="btn nav-hover scroll">Contact</a>
 								</li>
 								<li>
-									<a href="login.jsp" >Login In</a>
+									<a href="${pageContext.request.contextPath}/login.jsp" >Login In</a>
 								</li>
 								<li>
-								<a href="registe.jsp">Registe</a>
+								<a href="${pageContext.request.contextPath}/registe.jsp">Registe</a>
 							    </li>
 							</ul>
 

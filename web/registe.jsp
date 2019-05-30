@@ -20,15 +20,15 @@
 		}
 	</script>
 	<!-- Custom Theme files -->
-	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-	<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all" />
+	<link href="${pageContext.request.contextPath}/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.css" type="text/css" media="all" />
 	<!--// Owl-Carousel-CSS -->
-	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-	<link href="css/slider.css" type="text/css" rel="stylesheet" media="all">
-	<link href='css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
+	<link href="${pageContext.request.contextPath}/css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link href="${pageContext.request.contextPath}/css/slider.css" type="text/css" rel="stylesheet" media="all">
+	<link href='${pageContext.request.contextPath}/css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
 	<!-- //Custom Theme files -->
 	<!-- font-awesome icons -->
-	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet">
 	<!-- //font-awesome icons -->
 
 	<!-- web-fonts -->

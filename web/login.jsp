@@ -19,15 +19,15 @@
 		}
 	</script>
 	<!-- Custom Theme files -->
-	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-	<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all" />
+	<link href="${pageContext.request.contextPath}/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.css" type="text/css" media="all" />
 	<!--// Owl-Carousel-CSS -->
-	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-	<link href="css/slider.css" type="text/css" rel="stylesheet" media="all">
-	<link href='css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
+	<link href="${pageContext.request.contextPath}/css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link href="${pageContext.request.contextPath}/css/slider.css" type="text/css" rel="stylesheet" media="all">
+	<link href='${pageContext.request.contextPath}/css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
 	<!-- //Custom Theme files -->
 	<!-- font-awesome icons -->
-	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet">
 	<!-- //font-awesome icons -->
 
 	<!-- web-fonts -->
@@ -254,7 +254,9 @@ font {
 		<div class="content1">
 			<h2>Sign In Form</h2>
 			<s:form namespace="/" method="POST" action="CustomerAction_login">
-				<span style="font-size: 15px;color: red"><s:actionmessage></s:actionmessage></span>
+				<span style="font-size: 15px;color: red"><s:actionmessage></s:actionmessage>
+				<s:fielderror></s:fielderror>
+				</span>
 				<s:textfield name="loginName"  value="LoginName"  onfocus="this.value=''"  onblur="if (this.value == '') {this.value = 'LoginName';}"></s:textfield>
 				<s:password name="loginPassword"  value="LoginPassword" onfocus="this.value=''" onblur="if (this.value == '') {this.value = 'LoginPassword';}"></s:password>
 				<div class="button-row">

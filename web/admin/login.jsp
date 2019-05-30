@@ -78,13 +78,13 @@
 						</div>
 							<div class="clearfix">
 								<div class="login_icon"><img src="images/login_img.png" /></div>
-								<form class="" style=" width:300px; float:right; margin-right:50px;">
+								<form  style=" width:300px; float:right; margin-right:50px;" action="adminAdminAction_adminLogin">
 									<h4 class="title_name"><img src="images/login_title.png" /></h4>
 									<fieldset>
 										<ul>
-											<li class="frame_style form_error"><label class="user_icon iconfont">&#xe620;</label><input name="" type="text" data-name="用户名" id="username" /><i>用户名</i></li>
-											<li class="frame_style form_error"><label class="password_icon iconfont">&#xe625;</label><input name="" type="password" data-name="密码" id="userpwd" /><i>密码</i></li>
-											<li class="frame_style form_error"><label class="Codes_icon iconfont">&#xe624;</label><input name="" type="text" data-name="验证码" id="Codes_text" /><i>验证码</i>
+											<li class="frame_style form_error"><label class="user_icon iconfont">&#xe620;</label><input name="loginName" type="text" data-name="用户名" id="username" /><i>用户名</i></li>
+											<li class="frame_style form_error"><label class="password_icon iconfont">&#xe625;</label><input name="password" type="password" data-name="密码" id="userpwd" /><i>密码</i></li>
+											<li class="frame_style form_error"><label class="Codes_icon iconfont">&#xe624;</label><input type="text" data-name="验证码" id="Codes_text" /><i>验证码</i>
 												<div class="Codes_region"><img src="images/yanzhengma.png" width="100%" height="38px"></div>
 											</li>
 										</ul>
@@ -94,6 +94,7 @@
                                       <input type="checkbox" class="ace">
                                       <span class="lbl">保存密码</span>
                                   </label>
+											<input type="submit" value="登录">
 											<button type="button" class="login_btn" id="login_btn"> 登&nbsp;陆 </button>
 										</div>
 
