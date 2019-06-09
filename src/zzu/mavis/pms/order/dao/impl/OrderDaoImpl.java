@@ -89,5 +89,9 @@ public class OrderDaoImpl extends HibernateDaoSupport implements OrderDao {
         List<Orders> payStatus = (List<Orders>) this.getHibernateTemplate().findByCriteria(DetachedCriteria.forClass(Orders.class).add(Restrictions.eq("payStatus", 1)).add(Restrictions.eq("over",0)));
         return payStatus;
     }
+    public List<Orders> findByRoomId(String roomId){
+        List<Orders> ordersByRoomId = (List<Orders>) this.getHibernateTemplate().findByCriteria(DetachedCriteria.forClass(Orders.class).add(Restrictions.eq("room.roomId", roomId)));
+        return ordersByRoomId;
+    }
 
 }

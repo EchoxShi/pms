@@ -47,12 +47,12 @@
     <!--增删改，读写；查，只读-->
     <tx:advice id="txAdvice" transaction-manager="txManger">
         <tx:attributes>
-            <tx:method name="add*"></tx:method>
-            <tx:method name="delete*"></tx:method>
-            <tx:method name="update*"></tx:method>
-            <tx:method name="find*"></tx:method>
-            <tx:method name="login*"></tx:method>
-            <tx:method name="registe*"></tx:method>
+            <!--<tx:method name="add*"></tx:method>-->
+            <!--<tx:method name="delete*"></tx:method>-->
+            <!--<tx:method name="update*"></tx:method>-->
+            <!--<tx:method name="find*"></tx:method>-->
+            <!--<tx:method name="login*"></tx:method>-->
+            <!--<tx:method name="registe*"></tx:method>-->
             <tx:method name="*"></tx:method>
 
         </tx:attributes>

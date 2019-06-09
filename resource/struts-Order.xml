@@ -8,10 +8,10 @@
 <package name="ord" extends="common" namespace="/">
     <action name="OrderAction_*" class="zzu.mavis.pms.order.action.OrderAction" method="{1}">
         <result name="topay" type="redirect">OrderAction_findByctmId</result>
-        <result name="findByctmId" >/orderlist.jsp</result>
-        <result name="gopay" >/pay.jsp</result>
-        <result name="check">/comment.jsp</result>
-        <result name="fail">/fail.jsp</result>
+        <result name="findByctmId" >\WEB-INF\pages\orders\orderlist.jsp</result>
+        <result name="gopay" >\WEB-INF\pages\orders\pay.jsp</result>
+        <result name="check">\WEB-INF\pages\comment\comment.jsp</result>
+        <result name="fail">\WEB-INF\pages\orders\fail.jsp</result>
 
     </action>
 </package>

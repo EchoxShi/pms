@@ -7,12 +7,12 @@
 
 <package name="rom" extends="common" namespace="/">
     <action name="RoomAction_*" class="zzu.mavis.pms.room.action.RoomAction" method="{1}">
-        <result name="findById">/roomlist.jsp</result>
-        <result name="findRoomById">/roomdetail.jsp</result>
-        <result name="UIPreserve">/preserve.jsp</result>
-        <result name="findAll">/roomlist.jsp</result>
-        <result name="findAllOrderOrNot">/allRooms.jsp</result>
-        <result name="findAllOrderOrNotByRoomType">/allRooms.jsp</result>
+        <result name="findById">\WEB-INF\pages\room\roomlist.jsp</result>
+        <result name="findRoomById">\WEB-INF\pages\room\roomdetail.jsp</result>
+        <result name="UIPreserve">\WEB-INF\pages\room\preserve.jsp</result>
+        <result name="findAll">\WEB-INF\pages\room\roomlist.jsp</result>
+        <result name="findAllOrderOrNot">\WEB-INF\pages\room\allRooms.jsp</result>
+        <result name="findAllOrderOrNotByRoomType">\WEB-INF\pages\room\allRooms.jsp</result>
 
     </action>
 </package>

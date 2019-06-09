@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="GBK"?>
+<!--&lt;!&ndash; 指定校验配置文件的DTD信息 &ndash;&gt;-->
+<!--<!DOCTYPE validators PUBLIC-->
+        <!--"-//Apache Struts//XWork Validator 1.0.2//EN"-->
+        <!--"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">-->
+<!--&lt;!&ndash; 校验文件的根元素 &ndash;&gt;-->
+<!--<validators>-->
+    <!--&lt;!&ndash; 校验Action的name属性 &ndash;&gt;-->
+    <!--<field name="name">-->
+        <!--&lt;!&ndash; 指定name属性必须满足必填规则 &ndash;&gt;-->
+        <!--<field-validator type="requiredstring"-->
+                         <!--short-circuit="true">-->
+            <!--<param name="trim">true</param>-->
+            <!--<message>必须输入名字</message>-->
+        <!--</field-validator>-->
+        <!--&lt;!&ndash; 指定name属性必须匹配正则表达式 &ndash;&gt;-->
+        <!--<field-validator type="regex">-->
+            <!--<param name="regex"><![CDATA[(\w{4,25})]]></param>-->
+            <!--<message>您输入的用户名只能是字母和数字-->
+                <!--，且长度必须在4到25之间</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+    <!--&lt;!&ndash; 校验Action的pass属性 &ndash;&gt;-->
+    <!--<field name="pass">-->
+        <!--&lt;!&ndash; 指定pass属性必须满足必填规则 &ndash;&gt;-->
+        <!--<field-validator type="requiredstring">-->
+            <!--<param name="trim">true</param>-->
+            <!--<message>必须输入密码</message>-->
+        <!--</field-validator>-->
+        <!--&lt;!&ndash; 指定pass属性必须满足匹配指定的正则表达式 &ndash;&gt;-->
+        <!--<field-validator type="regex">-->
+            <!--<param name="regex"><![CDATA[(\w{4,25})]]></param>-->
+            <!--<message>您输入的密码只能是字母和数字-->
+                <!--，且长度必须在4到25之间</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+    <!--&lt;!&ndash; 指定age属性必须在指定范围内&ndash;&gt;-->
+    <!--<field name="age">-->
+        <!--&lt;!&ndash; 指定name属性必须满足必填规则 &ndash;&gt;-->
+        <!--<field-validator type="requiredstring">-->
+            <!--<param name="trim">true</param>-->
+            <!--<message>必须输入年龄</message>-->
+        <!--</field-validator>-->
+        <!--<field-validator type="int">-->
+            <!--<param name="min">1</param>-->
+            <!--<param name="max">150</param>-->
+            <!--<message>年纪必须在1到150之间</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+    <!--&lt;!&ndash; 指定birth属性必须在指定范围内&ndash;&gt;-->
+    <!--<field name="birth">-->
+        <!--&lt;!&ndash; 指定name属性必须满足必填规则 &ndash;&gt;-->
+        <!--<field-validator type="requiredstring">-->
+            <!--<param name="trim">true</param>-->
+            <!--<message>必须输入日期</message>-->
+        <!--</field-validator>-->
+        <!--<field-validator type="date">-->
+            <!--&lt;!&ndash; 下面指定日期字符串时，必须使用本Locale的日期格式 &ndash;&gt;-->
+            <!--<param name="min">1900-01-01</param>-->
+            <!--<param name="max">2050-02-21</param>-->
+            <!--<message>生日必须在${min}到${max}之间</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+<!--</validators>-->

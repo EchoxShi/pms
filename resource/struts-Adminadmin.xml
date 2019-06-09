@@ -5,10 +5,9 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
 
-<package name="memb" extends="common" namespace="/">
-    <action name="adminMemberAction_*" class="zzu.mavis.pms.admin.action.MemberAction" method="{1}">
-        <result name="findAll" >memberlist.jsp</result>
-
+<package name="admin" extends="common" namespace="/">
+    <action name="adminAdminAction_*" class="zzu.mavis.pms.admin.action.AdminAction" method="{1}">
+        <result name="login">/admin/index.jsp</result>
     </action>
 </package>
 

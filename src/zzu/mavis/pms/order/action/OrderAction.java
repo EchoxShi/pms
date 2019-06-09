@@ -13,6 +13,8 @@ import zzu.mavis.pms.room.domain.Room;
 import zzu.mavis.pms.room.service.RoomService;
 
 import javax.sound.midi.Soundbank;
+import java.lang.annotation.ElementType;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.SimpleFormatter;
@@ -63,12 +65,11 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
         double zhekou = 1;
         Double mony = null;
         Double remain = null;
-        if (null != member) {
+        if (null != member&& member.getMemtype()==2) {
             mony = member.getMon();
             remain = member.getRemain();
             if (null != mony) {
                 //计算折扣
-
                 if (mony == 5000) {
                     zhekou = 0.9;
                 }
@@ -94,9 +95,16 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
         long to = dayout.getTime();
         int days = (int) ((to - from) / (1000 * 60 * 60 * 24));
         Double money = (days * (Double) room.getPricePerNight()) * zhekou;
-        orders.setMony(money);
 
-        if (null != member) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        Double moneyy=Double.parseDouble(df.format(money));
+        orders.setMony(moneyy);
+
+        if (null != member&& member.getMemtype()==1) {
+            int origin = member.getScore();
+            member.setScore((int) (origin+(moneyy.intValue())*0.1));
+        }
+        if (null != member&&member.getMemtype()==2) {
             if (remain >= money) {
                 remain = remain - money;
                 member.setRemain(remain);
@@ -108,10 +116,9 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
                 addActionMessage("余额不够，无法使用会员储值卡付款，请及时充值!");
                 return "fail";
             }
-
         }
-        return null;
-
+        orderService.add(orders);
+        return "topay";
     }
 
     public String findByctmId(){
@@ -128,20 +135,34 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
 //        Orders byId = orderService.findById(orders.getOid());
 //        roomService.updateStatus(byId.getRoom());
 
+//       老师问取消订单的时候 积分会不会取消
+//          1先查出这个订单
+        Orders orders1 = orderService.findById(orders.getOid());
+//        2再查出这个会员
+        Customer customer = (Customer) ActionContext.getContext().getSession().get("byName");
+
+        Member member = memberService.findByCst(customer);
+        if(member!=null&&member.getMemtype()==1){
+            //        3然后将会员的积分减去这个订单的分数
+            member.setScore(member.getScore()-(int)(orders1.getMony()*0.1));
+        }
+        if(member!=null&&member.getMemtype()==2){
+//            如果是储值型的，就把钱还给人家
+            member.setRemain(member.getRemain()+orders1.getMony());
+        }
+
+
         //删除订单
         orderService.deleteById(orders.getOid());
         //通知老板 ，有人取消订单（已付款），联系退款
-
         return "topay";
         //返回 topay 是为了在 xml中省事
     }
-
     public String pay(){
 //        //先更改房间状态(因为只穿过来一个oid 的参数，并没有封装其他的值，所以需要再查一遍)
         String oid = orders.getOid();
 //        Orders byId = orderService.findById(oid);
 //        roomService.updateStatus(byId.getRoom());
-
         //再改变订单状态
         orderService.updateStatus(oid);
         return "gopay";
@@ -159,5 +180,6 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
         orderService.updateOver(oid);
         return "check";
     }
+
 
 }

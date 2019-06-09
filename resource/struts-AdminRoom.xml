@@ -10,9 +10,11 @@
         <result name="findAllRoom" >/admin/roomlist.jsp</result>
         <result name="add"  type="redirect" >adminRoomAction_findAllRoom</result>
         <result name="UIadd"  >/admin/addroom.jsp</result>
-        <result name="deleteByRoomId" >/admin/tip/deleteSucc.jsp</result>
+        <result name="deleteByRoomId" type="redirect">adminRoomAction_findAllRoom</result>
         <result name="UIupdate"  >/admin/updateroom.jsp</result>
         <result name="update" type="redirect"  >adminRoomAction_findAllRoom</result>
+        <result name="findAllRoom1" >/admin/roomshishi.jsp</result>
+        <result name="fail">/admin/fail.jsp</result>
 
     </action>
 </package>

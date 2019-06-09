@@ -70,15 +70,17 @@ public class CustomerAction extends ActionSupport  implements ModelDriven<Custom
         return "tologin";
     }
     public String login(){
+        System.out.println("loginsssssssssssss");
         Customer byName = customerService.findByName(customer);
-
+        System.out.println(byName);
 
         if(null==byName){
-            addActionMessage("该用户不存在！");
+            this.addActionMessage("该用户不存在！");
+            System.out.println(this);
             return "tologin";
         }
         if( !customer.getLoginPassword().trim().equals(byName.getLoginPassword())){
-           addActionMessage("密码错误！");
+           this.addActionMessage("密码错误！");
            return "tologin";
         }
         //把用户信息放入session
@@ -97,4 +99,10 @@ public class CustomerAction extends ActionSupport  implements ModelDriven<Custom
         ActionContext.getContext().getValueStack().set("roomTypeList",roomTypeList);
         return "login";
     }
+    public String exit(){
+        ActionContext.getContext().getSession().remove("byName");
+        return "exit";
+    }
+
+
 }

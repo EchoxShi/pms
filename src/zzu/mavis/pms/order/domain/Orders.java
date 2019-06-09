@@ -88,15 +88,4 @@ public class Orders {
         this.mony = mony;
     }
 
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "oid='" + oid + '\'' +
-                ", customer=" + customer +
-                ", room=" + room +
-                ", dayin=" + dayin +
-                ", dayout=" + dayout +
-                ", mony=" + mony +
-                '}';
-    }
 }

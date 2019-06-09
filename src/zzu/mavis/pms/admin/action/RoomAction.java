@@ -4,6 +4,8 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.ServletActionContext;
+import zzu.mavis.pms.order.domain.Orders;
+import zzu.mavis.pms.order.service.OrderService;
 import zzu.mavis.pms.pages.PageBean;
 import zzu.mavis.pms.room.domain.Room;
 import zzu.mavis.pms.room.service.RoomService;
@@ -15,13 +17,18 @@ import java.util.Date;
 import java.util.List;
 
 public class RoomAction extends ActionSupport implements ModelDriven<Room> {
+
     private File myfile;//上传的文件的file对象，由拦截器自动填充
     private  String myfileFileName;//上传文件名，由拦截器自动填充
     private String myfileContentType;//上传文件类型，由拦截器自动填充
     private String savePath;//上传文件路径，通过action中配置参数获取、、要不要直接用room的picPATH呢
 //得到页面上传过来的 房间类型ID
     private  String roomTypeId;
+    private OrderService orderService;
 
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     public void setRoomTypeId(String roomTypeId) {
         this.roomTypeId = roomTypeId;
@@ -93,8 +100,16 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room> {
         return "findAllRoom";
     }
      public  String deleteByRoomId(){
-        roomService.deleteByRoomId(room.getRoomId());
-        return "deleteByRoomId";
+//        老师问已经被订的房间可以被删除吗
+//         先查询order 看这个房间有没有被订
+         List<Orders> ordersList = orderService.findByRoomId(room.getRoomId());
+//         如果被订 ，不让删
+         if(ordersList.size()!=0){
+             return "fail";
+         }else{
+             roomService.deleteByRoomId(room.getRoomId());
+             return "deleteByRoomId";
+         }
      }
     public void pic() throws IOException {
         //上传的文件将换名保存
@@ -172,4 +187,30 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room> {
         roomService.update(room);
         return "update";
    }
+
+
+    public String findAllRoom1(){
+        Date searchDayIn =new Date();
+        System.out.println(searchDayIn);
+        Date searchDayOut = new Date();
+
+        //查询所有的房间类型
+        List<RoomType> roomTypeList = roomTypeService.findAll();
+        ActionContext.getContext().getValueStack().set("roomTypeList",roomTypeList);
+
+        List<Room> all = roomService.findAll();
+        for (Room r:all){
+            boolean ordered = orderService.isOrdered(searchDayIn, searchDayOut, r);
+            if(ordered){
+                System.out.println("ordered:"+r.getRoomId());
+                r.setStatus(0);
+            }else{
+                System.out.println("no ordered:"+r.getRoomId());
+                r.setStatus(1);
+            }
+        }
+        ActionContext.getContext().getValueStack().set("roomList",all);
+        return "findAllRoom1";
+    }
+
 }

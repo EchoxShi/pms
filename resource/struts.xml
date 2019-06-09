@@ -9,7 +9,39 @@
     <constant name="struts.ui.theme" value="simple"></constant>
     <!--2.公共配置-->
     <package name="common" extends="struts-default" namespace="/">
-    <global-allowed-methods>regex:.*</global-allowed-methods>
+
+
+<!--注册拦截器-->
+        <interceptors>
+            <interceptor name="myloginInterceptor" class="zzu.mavis.pms.web.interceptor.MyLoginInterceptor">
+                <param name="excludeMethods">login,registe,UILogin,UIToindex,adminLogin</param>
+            </interceptor>
+            <!--包成拦截器站-->
+            <interceptor-stack name="myInterceptor">
+                <interceptor-ref name="myloginInterceptor"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+
+            </interceptor-stack>
+        </interceptors>
+
+        <!--&lt;!&ndash;覆盖掉默认拦截器&ndash;&gt;-->
+        <default-interceptor-ref name="myInterceptor">
+        </default-interceptor-ref>
+
+
+
+            <global-results>
+                <result name="tologin">/login.jsp
+                </result>
+            </global-results>
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+        <!--默认类型是ACTIONsUPPORT-->
+        <action name="UIAction_*_*">
+            <result >/WEB-INF/pages/{1}/{2}.jsp</result>
+        </action>
+
+
     </package>
     <!--    3.包含其他配置文件-->
     <include file="struts-Customer.xml"></include>
@@ -22,8 +54,9 @@
     <include file="struts-AdminRoomType.xml"></include>
     <include file="struts-AdminOrder.xml"></include>
     <include file="struts-AdminMember.xml"></include>
+    <include file="struts-Adminadmin.xml"></include>
 
-
+<!--我配一个action拦截入口-->
 
 
 </struts>

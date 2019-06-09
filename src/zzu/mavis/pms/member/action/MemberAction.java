@@ -9,6 +9,7 @@ import zzu.mavis.pms.member.service.MemberService;
 import zzu.mavis.pms.order.domain.Orders;
 import zzu.mavis.pms.order.service.OrderService;
 
+import javax.sound.midi.Soundbank;
 import java.util.List;
 
 public class MemberAction extends ActionSupport  implements ModelDriven<Member> {
@@ -31,6 +32,7 @@ public class MemberAction extends ActionSupport  implements ModelDriven<Member> 
 
 
     public String openMem(){
+        System.out.println(member.getMemtype());
         //先得到 customer的信息
         Customer byName = (Customer) ActionContext.getContext().getSession().get("byName");
         //判断是否已经注册了会员
@@ -48,7 +50,7 @@ public class MemberAction extends ActionSupport  implements ModelDriven<Member> 
             member.setMon(0.0);
             member.setCustomer(byName);
             memberService.add(member);
-            return "UILogin";
+            return "UIScore";
         }else if (member.getMemtype()==2){
             //如果 memtype=2
             //写入 memeber表中 ，memtype =2; mon =表单上传过来的值=remain，score初始化=0

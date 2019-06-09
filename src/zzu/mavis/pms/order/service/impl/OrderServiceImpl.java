@@ -91,4 +91,9 @@ public class OrderServiceImpl implements OrderService {
         return orderDao.findAllDoing();
     }
 
+    @Override
+    public List<Orders> findByRoomId(String roomId) {
+        return this.orderDao.findByRoomId(roomId);
+    }
+
 }

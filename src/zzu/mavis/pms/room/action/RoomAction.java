@@ -5,6 +5,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import org.hibernate.criterion.Order;
+import zzu.mavis.pms.customer.domain.Customer;
 import zzu.mavis.pms.order.service.OrderService;
 import zzu.mavis.pms.room.domain.Room;
 import zzu.mavis.pms.room.service.RoomService;
@@ -149,15 +150,12 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room> {
         Date searchDayIn= (Date) ActionContext.getContext().getSession().get("searchDayIn");
         Date searchDayOut= (Date) ActionContext.getContext().getSession().get("searchDayOut");
 
-        System.out.println(searchDayIn+"qqqqqqqqqqqqqqqqqqqqqqqqq");
-        System.out.println(searchDayOut+"qqqqqqqqqqqqqqqqqqqqqqqqq");
 
         //查询所有的房间类型
         List<RoomType> roomTypeList = roomTypeService.findAll();
         ActionContext.getContext().getValueStack().set("roomTypeList",roomTypeList);
 
         List<Room> all = roomService.findById(room.getRoomType().getRoomTypeId());
-        System.out.println(all.size()+"qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
 
         for (Room r:all){
             boolean ordered = orderService.isOrdered(searchDayIn, searchDayOut, r);
@@ -189,8 +187,11 @@ public class RoomAction extends ActionSupport implements ModelDriven<Room> {
         return "findRoomById";
     }
     public String UIPreserve(){
+        Customer customer = (Customer) ActionContext.getContext().getSession().get("byName");
+        System.out.println(customer.getBirthday());
+        System.out.println(customer.getCtmName());
         ActionContext.getContext().getValueStack().
-                push(ActionContext.getContext().getSession().get("byName"));
+                push(customer);
         Room room2 = roomService.findByRoomId(this.room.getRoomId());
         ActionContext.getContext().put("room", room2);
         return "UIPreserve";

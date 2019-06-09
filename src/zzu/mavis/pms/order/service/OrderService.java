@@ -28,4 +28,5 @@ public interface OrderService {
     public List<Orders> findAllOver();
 
     public List<Orders> findAllDoing();
+    public List<Orders> findByRoomId(String roomId);
 }

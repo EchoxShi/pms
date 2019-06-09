@@ -10,10 +10,10 @@
         <!--开通储值型会员，开通完成后直接跳进  我的会员 页面 去查看自己的 会员详细状况-->
 
         <result name="openMonMem" type="redirect">MemberAction_findByCst</result>
-        <result name="findByCst">/paymember.jsp</result>
+        <result name="findByCst">\WEB-INF\pages\member\paymember.jsp</result>
         <!--开通积分型会员，开通完成后直接跳进roomlist 去浏览 预定房间-->
-        <result name="UILogin"  type="redirect">CustomerAction_UILogin</result>
-        <result name="UImymember">/mymember.jsp</result>
+        <result name="UIScore"  type="redirect">MemberAction_UImymember</result>
+        <result name="UImymember">\WEB-INF\pages\member\mymember.jsp</result>
 
         <result name="hasOpened"  type="redirect">MemberAction_UImymember</result>
 

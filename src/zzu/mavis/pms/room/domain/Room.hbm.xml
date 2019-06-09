@@ -14,17 +14,12 @@
         <property name="status" type="int" ></property>
         <property name="picPath" ></property>
 
-        <set name="ordersSet">
+        <set name="ordersSet" cascade="save-update" inverse="true">
             <key column="roomId" ></key>
             <one-to-many class="zzu.mavis.pms.order.domain.Orders"></one-to-many>
         </set>
 
-
         <many-to-one name="roomType" class="zzu.mavis.pms.roomType.domain.RoomType" column="roomTypeId" cascade="save-update"></many-to-one>
-
-
-
-
 
     </class>
 </hibernate-mapping>
